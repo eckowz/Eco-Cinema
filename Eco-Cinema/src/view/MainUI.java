@@ -25,7 +25,7 @@ public class MainUI {
                 case MainMenu.OP_VENDAINGRESSOS:
                     break;
                 case MainMenu.OP_CADASTROS:
-                    new FilmeUI(listaFilmes).executar();
+                    new CadastroUI().executar();
                     break;
                 case MainMenu.OP_RELATORIOS:
                     break;

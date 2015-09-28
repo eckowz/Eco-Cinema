@@ -50,7 +50,7 @@ public class FilmeUI {
                 lista.addFilmes(new Filme(codigo, nome, genero, sinopse));
                 System.out.println("Título " + nome + " cadastrado com sucesso!");
             } catch (Exception e) {
-                System.out.println("Formato de Data inválido!");
+                System.out.println("Ocorreu um erro ao salvar!");
             }
         }
     }
