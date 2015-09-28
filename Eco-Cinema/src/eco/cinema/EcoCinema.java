@@ -5,6 +5,8 @@
  */
 package eco.cinema;
 
+import view.MainUI;
+
 /**
  *
  * @author gserafini
@@ -15,7 +17,7 @@ public class EcoCinema {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new MainUI().executar();
     }
     
 }
