@@ -1,6 +1,5 @@
 package view;
 
-import java.text.ParseException;
 import java.util.Date;
 import model.HorarioSessao;
 import model.Filme;
@@ -59,12 +58,12 @@ public class SessaoUI {
     private void cadastrarHorario() {
         System.out.println("Lista de salas existentes: ");
         new SalaUI(listaSalas).mostrarSalas();
-        int codigoSala = Console.scanInt("/nInforme o código da sala: ");
+        int codigoSala = Console.scanInt("\nInforme o código da sala: ");
 
         if (listaSalas.salaExiste(codigoSala)) {
             System.out.println("Lista de filmes disponiveis: ");
             new FilmeUI(listaFilmes).mostrarFilmes();
-            int codigoFilme = Console.scanInt("/nInforme o código do filme: ");
+            int codigoFilme = Console.scanInt("\nInforme o código do filme: ");
 
             if (listaFilmes.filmeExiste(codigoFilme)) {
                 Filme filme = listaFilmes.buscarFilme(codigoFilme);

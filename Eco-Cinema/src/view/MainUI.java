@@ -1,6 +1,8 @@
 package view;
 
 import repositorio.RepositorioFilmes;
+import repositorio.RepositorioSalas;
+import repositorio.Sessao;
 import util.Console;
 import view.menu.MainMenu;
 
@@ -11,9 +13,13 @@ import view.menu.MainMenu;
 public class MainUI {
 
     private RepositorioFilmes listaFilmes;
+    private RepositorioSalas listaSalas;
+    private Sessao sessoes;
 
     public MainUI() {
         listaFilmes = new RepositorioFilmes();
+        listaSalas = new RepositorioSalas();
+        sessoes = new Sessao();
     }
 
     public void executar() {
@@ -23,9 +29,10 @@ public class MainUI {
             opcao = Console.scanInt("Digite sua opção:");
             switch (opcao) {
                 case MainMenu.OP_VENDAINGRESSOS:
+                    new VendaIngressoUI().executar();
                     break;
                 case MainMenu.OP_CADASTROS:
-                    new CadastroUI().executar();
+                    new CadastroUI(sessoes, listaSalas, listaFilmes).executar();
                     break;
                 case MainMenu.OP_RELATORIOS:
                     break;

@@ -12,14 +12,14 @@ import view.menu.CadastroMenu;
  */
 public class CadastroUI {
 
+    private Sessao sessao;
     private RepositorioFilmes listaFilmes;
     private RepositorioSalas listaSalas;
-    private Sessao sessoes;
 
-    public CadastroUI() {
-        listaFilmes = new RepositorioFilmes();
-        listaSalas = new RepositorioSalas();
-        sessoes = new Sessao();
+    public CadastroUI(Sessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes) {
+        this.sessao = sessao;
+        this.listaSalas = listaSalas;
+        this.listaFilmes = listaFilmes;
     }
 
     public void executar() {
@@ -35,8 +35,8 @@ public class CadastroUI {
                     new SalaUI(listaSalas).executar();
                     break;
                 case CadastroMenu.OP_CADASTROSESSAO:
-                    new SessaoUI(sessoes, listaSalas, listaFilmes).executar();
-                    break;                    
+                    new SessaoUI(sessao, listaSalas, listaFilmes).executar();
+                    break;
                 case CadastroMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");
                     break;
