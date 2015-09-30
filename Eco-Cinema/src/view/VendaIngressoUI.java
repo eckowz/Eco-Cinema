@@ -5,6 +5,9 @@
  */
 package view;
 
+import repositorio.RepositorioFilmes;
+import repositorio.RepositorioSalas;
+import repositorio.Sessao;
 import util.Console;
 import view.menu.VendaIngressoMenu;
 
@@ -14,9 +17,15 @@ import view.menu.VendaIngressoMenu;
  */
 public class VendaIngressoUI {
 
+    private Sessao sessao;
+    private SessaoUI sessaoUI;
+    private RepositorioFilmes listaFilmes;
+    private RepositorioSalas listaSalas;
 
-    public VendaIngressoUI() {
-
+    public VendaIngressoUI(Sessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes) {
+        this.sessao = sessao;
+        this.listaSalas = listaSalas;
+        this.listaFilmes = listaFilmes;
     }
 
     public void executar() {
@@ -28,7 +37,7 @@ public class VendaIngressoUI {
                 case VendaIngressoMenu.OP_VENDAINGRESSOS:
                     break;
                 case VendaIngressoMenu.OP_LISTASESSAO:
-
+                    new SessaoUI(sessao, listaSalas, listaFilmes).listarHorarios();
                     break;
                 case VendaIngressoMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");

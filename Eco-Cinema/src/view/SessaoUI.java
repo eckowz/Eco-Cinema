@@ -90,13 +90,14 @@ public class SessaoUI {
     }
 
     public void listarHorarios() {
-        System.out.println("Horarios:");
-        System.out.println("-----------------");
+        System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-20s", "HORÁRIO") + "\t"
+                + String.format("%-20s", "|SALA") + "\t"
+                + String.format("%-20s", "|FILME"));
         for (HorarioSessao horario : sessao.getListaHorarios()) {
-            System.out.println(DateUtil.dateHourToString(horario.getHorario())
-                    + " -> " + horario.getSala().getCodigoSala()
-                    + " -> " + horario.getFilme().getNomeFilme());
-            System.out.println("-----------------");
+            System.out.println(String.format("%-20s", DateUtil.dateHourToString(horario.getHorario())) + "\t"
+                    + String.format("%-20s", "|" + horario.getSala().getCodigoSala()) + "\t"
+                    + String.format("%-20s", "|" + horario.getFilme().getNomeFilme()) );
         }
     }
 
