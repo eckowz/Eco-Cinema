@@ -73,10 +73,11 @@ public class SessaoUI {
                 try {
                     horario = DateUtil.stringToDateHour(dataHora);
                     if (sessao.sessaoExiste(horario)) {
-                        System.out.println("Esse horario já para existe outra sessão");
+                        System.out.println("Esse horario já existe para outra sessão.");
+                    } else {
+                        sessao.addHorario(new Sessao(horario, filme, sala));
+                        System.out.println("Sessão cadastrada com sucesso!");
                     }
-                    sessao.addHorario(new Sessao(horario, filme, sala));
-                    System.out.println("Sessão cadastrada com sucesso!");
                 } catch (Exception e) {
                     System.out.println("Data ou hora no formato inválido!");
                 }
