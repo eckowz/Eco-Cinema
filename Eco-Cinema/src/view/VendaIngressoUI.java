@@ -7,7 +7,7 @@ package view;
 
 import repositorio.RepositorioFilmes;
 import repositorio.RepositorioSalas;
-import repositorio.Sessao;
+import repositorio.RepositorioSessao;
 import util.Console;
 import view.menu.VendaIngressoMenu;
 
@@ -17,15 +17,16 @@ import view.menu.VendaIngressoMenu;
  */
 public class VendaIngressoUI {
 
-    private Sessao sessao;
+    private RepositorioSessao sessao;
     private SessaoUI sessaoUI;
     private RepositorioFilmes listaFilmes;
     private RepositorioSalas listaSalas;
 
-    public VendaIngressoUI(Sessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes) {
+    public VendaIngressoUI(RepositorioSessao sessao, SessaoUI sessaoUI) {
         this.sessao = sessao;
         this.listaSalas = listaSalas;
         this.listaFilmes = listaFilmes;
+        this.sessaoUI = sessaoUI;
     }
 
     public void executar() {
@@ -35,9 +36,10 @@ public class VendaIngressoUI {
             opcao = Console.scanInt("Digite sua opção:");
             switch (opcao) {
                 case VendaIngressoMenu.OP_VENDAINGRESSOS:
+                    registraVenda();
                     break;
                 case VendaIngressoMenu.OP_LISTASESSAO:
-                    new SessaoUI(sessao, listaSalas, listaFilmes).listarHorarios();
+                    sessaoUI.listarHorariosComAssentos();
                     break;
                 case VendaIngressoMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");
@@ -47,4 +49,22 @@ public class VendaIngressoUI {
             }
         } while (opcao != VendaIngressoMenu.OP_VOLTAR);
     }
+
+    private void registraVenda() {
+        int cod = 0;
+        sessaoUI.listarHorariosComAssentos();
+        cod = Console.scanInt("Informe o código da sessão para a venda: ");
+        if (sessao.sessaoExistePorCodigo(cod)) {
+            if(sessao.temAssento(cod)){
+                sessao.ocupaAssento(cod);
+                System.out.println("Assentos disponiveis: " + sessao.listarAssentosDisponiveisPorSessao(cod) + ".");
+            }else{
+                System.out.println("Não há assentos disponiveis.");
+            }
+        }else{
+            System.out.println("Sessão não localizada.");
+        }
+    }
+    
+    
 }

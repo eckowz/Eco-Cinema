@@ -11,7 +11,7 @@ public class MainMenu {
         return ("\n--------------------------------------\n"
                 + "1- Menu Ingressos\n"
                 + "2- Menu Cadastros\n"
-                + "3- Menu Relatórios\n"
+                //+ "3- Menu Relatórios\n"
                 + "0- Sair da Aplicação"
                 + "\n--------------------------------------");
     }

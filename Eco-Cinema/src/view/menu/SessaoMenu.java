@@ -5,7 +5,7 @@ public class SessaoMenu {
     public static final int OP_REMOVER = 2;
     public static final int OP_EDITAR = 3;
     public static final int OP_LISTAR = 4;
-    public static final int OP_CONSULTAR = 5;
+    public static final int OP_CONSULTARFILME = 5;
     public static final int OP_VOLTAR = 0;
 
     public static String getOpcoes() {

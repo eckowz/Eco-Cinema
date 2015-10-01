@@ -2,7 +2,7 @@ package view;
 
 import repositorio.RepositorioFilmes;
 import repositorio.RepositorioSalas;
-import repositorio.Sessao;
+import repositorio.RepositorioSessao;
 import util.Console;
 import view.menu.CadastroMenu;
 
@@ -12,14 +12,16 @@ import view.menu.CadastroMenu;
  */
 public class CadastroUI {
 
-    private Sessao sessao;
+    private RepositorioSessao sessao;
     private RepositorioFilmes listaFilmes;
     private RepositorioSalas listaSalas;
+    private SessaoUI sessaoUI;
 
-    public CadastroUI(Sessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes) {
+    public CadastroUI(RepositorioSessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes, SessaoUI sessaoUI) {
         this.sessao = sessao;
         this.listaSalas = listaSalas;
         this.listaFilmes = listaFilmes;
+        this.sessaoUI = sessaoUI;
     }
 
     public void executar() {
@@ -35,7 +37,7 @@ public class CadastroUI {
                     new SalaUI(listaSalas).executar();
                     break;
                 case CadastroMenu.OP_CADASTROSESSAO:
-                    new SessaoUI(sessao, listaSalas, listaFilmes).executar();
+                    sessaoUI.executar();
                     break;
                 case CadastroMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");

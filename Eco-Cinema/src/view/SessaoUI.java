@@ -1,10 +1,10 @@
 package view;
 
 import java.util.Date;
-import model.HorarioSessao;
+import model.Sessao;
 import model.Filme;
 import model.Sala;
-import repositorio.Sessao;
+import repositorio.RepositorioSessao;
 import repositorio.RepositorioFilmes;
 import repositorio.RepositorioSalas;
 import util.Console;
@@ -13,18 +13,18 @@ import view.menu.SessaoMenu;
 
 public class SessaoUI {
 
-    private Sessao sessao;
+    private RepositorioSessao sessao;
     private RepositorioFilmes listaFilmes;
     private RepositorioSalas listaSalas;
 
-    public SessaoUI(Sessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes) {
+    public SessaoUI(RepositorioSessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes) {
         this.sessao = sessao;
         this.listaSalas = listaSalas;
         this.listaFilmes = listaFilmes;
-
     }
 
     public void executar() {
+
         int opcao = 0;
         do {
             System.out.println(SessaoMenu.getOpcoes());
@@ -40,9 +40,9 @@ public class SessaoUI {
                     editarHorario();
                     break;
                 case SessaoMenu.OP_LISTAR:
-                    listarHorarios();
+                    listarHorariosComAssentos();
                     break;
-                case SessaoMenu.OP_CONSULTAR:
+                case SessaoMenu.OP_CONSULTARFILME:
                     consultarHorarios();
                     break;
                 case SessaoMenu.OP_VOLTAR:
@@ -72,10 +72,10 @@ public class SessaoUI {
                 Date horario;
                 try {
                     horario = DateUtil.stringToDateHour(dataHora);
-                    if (sessao.consultaExiste(horario)) {
-                        System.out.println("Nesse horario já existe outra sessão");
+                    if (sessao.sessaoExiste(horario)) {
+                        System.out.println("Esse horario já para existe outra sessão");
                     }
-                    sessao.addHorario(new HorarioSessao(horario, filme, sala));
+                    sessao.addHorario(new Sessao(horario, filme, sala));
                     System.out.println("Sessão cadastrada com sucesso!");
                 } catch (Exception e) {
                     System.out.println("Data ou hora no formato inválido!");
@@ -91,13 +91,33 @@ public class SessaoUI {
 
     public void listarHorarios() {
         System.out.println("-----------------------------\n");
-        System.out.println(String.format("%-20s", "HORÁRIO") + "\t"
-                + String.format("%-20s", "|SALA") + "\t"
+        System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
+                + String.format("%-20s", "|HORÁRIO") + "\t"
+                + String.format("%-5s", "|SALA") + "\t"
                 + String.format("%-20s", "|FILME"));
-        for (HorarioSessao horario : sessao.getListaHorarios()) {
-            System.out.println(String.format("%-20s", DateUtil.dateHourToString(horario.getHorario())) + "\t"
-                    + String.format("%-20s", "|" + horario.getSala().getCodigoSala()) + "\t"
-                    + String.format("%-20s", "|" + horario.getFilme().getNomeFilme()) );
+        for (Sessao horarioSessao : sessao.getListaSessoes()) {
+            System.out.println(String.format("%-10s", horarioSessao.getCodSessao()) + "\t"
+                    + String.format("%-20s", "|" + DateUtil.dateHourToString(horarioSessao.getHorario())) + "\t"
+                    + String.format("%-5s", "|" + horarioSessao.getSala().getCodigoSala()) + "\t"
+                    + String.format("%-20s", "|" + horarioSessao.getFilme().getNomeFilme())
+            );
+        }
+    }
+
+    public void listarHorariosComAssentos() {
+        System.out.println("-----------------------------\n");
+        System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
+                + String.format("%-20s", "|HORÁRIO") + "\t"
+                + String.format("%-5s", "|SALA") + "\t"
+                + String.format("%-10s", "|ASSENTOS DISP.") + "\t"
+                + String.format("%-20s", "|FILME"));
+        for (Sessao horario : sessao.getListaSessoes()) {
+            System.out.println(String.format("%-10s", horario.getCodSessao()) + "\t"
+                    + String.format("%-20s", "|" + DateUtil.dateHourToString(horario.getHorario())) + "\t"
+                    + String.format("%-5s", "|" + horario.getSala().getCodigoSala()) + "\t"
+                    + String.format("%-10s", "|" + horario.getSala().getQuantidadeAssentos()) + "\t"
+                    + String.format("%-20s", "|" + horario.getFilme().getNomeFilme())
+            );
         }
     }
 
