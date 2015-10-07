@@ -1,6 +1,7 @@
 package view;
 
 import java.util.Date;
+import java.util.InputMismatchException;
 import model.Filme;
 import model.Sessao;
 import model.Sala;
@@ -43,10 +44,11 @@ public class MainUI {
 
     public void executar() {
 
-        int opcao = 0;
+        int opcao = -1;
         do {
             System.out.println(MainMenu.getOpcoes());
             opcao = Console.scanInt("Digite sua opção:");
+
             switch (opcao) {
                 case MainMenu.OP_VENDAINGRESSOS:
                     new VendaIngressoUI(listaSessoes, sessaoUI).executar();
@@ -61,7 +63,6 @@ public class MainUI {
                     break;
                 default:
                     System.out.println("Opção inválida..");
-
             }
         } while (opcao != MainMenu.OP_SAIR);
     }
