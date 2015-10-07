@@ -43,9 +43,9 @@ public class FilmeUI {
         if (lista.filmeExiste(codigo)) {
             System.out.println("Código já existente no cadastro");
         } else {
-            String nome = Console.scanString("Nome do filme: ");
-            String genero = Console.scanString("Gênero: ");
-            String sinopse = Console.scanString("Sinopse: ");
+            String nome = Console.scanString("Nome do filme: ").toUpperCase();
+            String genero = Console.scanString("Gênero: ").toUpperCase();
+            String sinopse = Console.scanString("Sinopse: ").toUpperCase();
             try {
                 lista.addFilmes(new Filme(codigo, nome, genero, sinopse));
                 System.out.println("Título " + nome + " cadastrado com sucesso!");
