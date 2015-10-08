@@ -26,6 +26,9 @@ public class FilmeUI {
                 case FilmeMenu.OP_CADASTRAR:
                     cadastrarFilme();
                     break;
+                case FilmeMenu.OP_REMOVER:
+                    mostrarFilmes();
+                    lista.removerFilme();
                 case FilmeMenu.OP_LISTAR:
                     mostrarFilmes();
                     break;
