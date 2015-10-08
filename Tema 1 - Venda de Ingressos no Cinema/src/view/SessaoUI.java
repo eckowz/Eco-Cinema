@@ -34,7 +34,8 @@ public class SessaoUI {
                     cadastrarHorario();
                     break;
                 case SessaoMenu.OP_REMOVER:
-                    removerHorario();
+                    listarHorariosComAssentos();
+                    sessao.removerSessao();
                     break;
                 case SessaoMenu.OP_EDITAR:
                     editarHorario();
@@ -122,9 +123,7 @@ public class SessaoUI {
         }
     }
 
-    private void removerHorario() {
-        //Definir o método
-    }
+
 
     private void editarHorario() {
         //Definir o método

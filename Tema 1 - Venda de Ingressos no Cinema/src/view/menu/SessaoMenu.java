@@ -11,7 +11,7 @@ public class SessaoMenu {
     public static String getOpcoes() {
         return ("\n--------------------------------------\n"
                 + "1- Cadastrar sessão\n"
-                //+ "2- Remover sessão\n"
+                + "2- Remover sessão\n"
                 //+ "3- Editar sessão\n"
                 + "4- Listar sessões\n"
                 //+ "5- Consultar sessão por filme\n"

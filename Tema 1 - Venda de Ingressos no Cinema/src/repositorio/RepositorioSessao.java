@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import model.Sessao;
+import util.Console;
 
 public class RepositorioSessao {
 
@@ -23,6 +24,17 @@ public class RepositorioSessao {
 
     public List<Sessao> getListaSessoes() {
         return listaSessoes;
+    }
+
+    public void removerSessao() {
+        try {
+            int codigoSessao = Console.scanInt("\nInforme o código da sessão: ")-1;
+            getListaSessoes().remove(codigoSessao);
+            System.out.println("Sessão removida.");
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro. Informe apenas o código da sessão");
+        }
+
     }
 
     public boolean sessaoExiste(Date horario) {
