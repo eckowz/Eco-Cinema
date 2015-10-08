@@ -16,14 +16,14 @@ import util.Console;
  */
 public class RepositorioSalas {
 
-    private List<Sala> salas;
+    private List<Sala> listaSalas;
 
     public RepositorioSalas() {
-        salas = new ArrayList<Sala>();
+        listaSalas = new ArrayList<Sala>();
     }
 
     public boolean addSalas(Sala sala) {
-        return (salas.add(sala));
+        return (listaSalas.add(sala));
     }
 
     public void removerSala() {
@@ -43,7 +43,7 @@ public class RepositorioSalas {
 
     public int buscaIndiceSala(int cod) {
         int i = 0;
-        for (Sala sala : salas) {
+        for (Sala sala : listaSalas) {
             if (sala.getCodigoSala() == (cod)) {
                 return i;
             }
@@ -53,11 +53,11 @@ public class RepositorioSalas {
     }
 
     public List<Sala> getListaSalas() {
-        return salas;
+        return listaSalas;
     }
 
     public boolean salaExiste(int codigoSala) {
-        for (Sala sala : salas) {
+        for (Sala sala : listaSalas) {
             if (sala.getCodigoSala() == (codigoSala)) {
                 return true;
             }
@@ -66,7 +66,7 @@ public class RepositorioSalas {
     }
 
     public Sala buscarSala(int codigoSala) {
-        for (Sala sala : salas) {
+        for (Sala sala : listaSalas) {
             if (sala.getCodigoSala() == (codigoSala)) {
                 return sala;
             }
