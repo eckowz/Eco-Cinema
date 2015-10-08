@@ -15,22 +15,22 @@ import model.Filme;
  */
 public class RepositorioFilmes {
 
-    private List<Filme> filmes;
+    private List<Filme> listaFilmes;
 
     public RepositorioFilmes() {
-        filmes = new ArrayList<Filme>();
+        listaFilmes = new ArrayList<Filme>();
     }
 
     public boolean addFilmes(Filme filme) {
-        return (filmes.add(filme));
+        return (listaFilmes.add(filme));
     }
 
     public List<Filme> getListaFilmes() {
-        return filmes;
+        return listaFilmes;
     }
 
     public boolean filmeExiste(int codigoFilme) {
-        for (Filme filme : filmes) {
+        for (Filme filme : listaFilmes) {
             if (filme.getCodigoFilme()==(codigoFilme)) {
                 return true;
             }
@@ -39,7 +39,7 @@ public class RepositorioFilmes {
     }
 
     public Filme buscarFilme(int codigoFilme) {
-        for (Filme filme : filmes) {
+        for (Filme filme : listaFilmes) {
             if (filme.getCodigoFilme()==(codigoFilme)) {
                 return filme;
            }
