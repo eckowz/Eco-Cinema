@@ -39,20 +39,33 @@ public class FilmeUI {
     }
 
     private void cadastrarFilme() {
-        int codigo = Console.scanInt("Código: ");
-        if (lista.filmeExiste(codigo)) {
-            System.out.println("Código já existente no cadastro");
-        } else {
-            String nome = Console.scanString("Nome do filme: ").toUpperCase();
-            String genero = Console.scanString("Gênero: ").toUpperCase();
-            String sinopse = Console.scanString("Sinopse: ").toUpperCase();
-            try {
-                lista.addFilmes(new Filme(codigo, nome, genero, sinopse));
-                System.out.println("Título " + nome + " cadastrado com sucesso!");
-            } catch (Exception e) {
-                System.out.println("Ocorreu um erro ao salvar!");
+        String nome = "", genero = "", sinopse = "";
+        int codigo = -1;
+
+        do {
+            codigo = Console.scanInt("\nCódigo: ");
+            if (codigo == -1) {
+                System.out.println("Código inválido.");
+            } else {
+                if (lista.filmeExiste(codigo)) {
+                    System.out.println("Código já existente no cadastro.");
+                } else {
+                    nome = Console.scanString("Nome do filme: ").toUpperCase();
+                    genero = Console.scanString("Gênero: ").toUpperCase();
+                    sinopse = Console.scanString("Sinopse: ").toUpperCase();
+                    if (!(nome.equals("") || genero.equals("") || sinopse.equals(""))) {
+                        try {
+                            lista.addFilmes(new Filme(codigo, nome, genero, sinopse));
+                            System.out.println("Título " + nome + " cadastrado com sucesso!");
+                        } catch (Exception e) {
+                            System.out.println("Ocorreu um erro ao salvar!");
+                        }
+                    }
+
+                }
+
             }
-        }
+        } while (codigo == -1 || nome.equals("") || genero.equals("") || sinopse.equals(""));
     }
 
     public void mostrarFilmes() {

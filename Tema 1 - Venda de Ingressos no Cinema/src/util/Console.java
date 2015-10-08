@@ -17,7 +17,6 @@ public class Console {
             Scanner scanner = new Scanner(System.in);
             return (scanner.nextInt());
         } catch (InputMismatchException e) {
-            System.out.println("");
         }
         return -1;
     }
