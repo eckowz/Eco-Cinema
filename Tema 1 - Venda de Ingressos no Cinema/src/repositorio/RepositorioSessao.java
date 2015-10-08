@@ -28,13 +28,28 @@ public class RepositorioSessao {
 
     public void removerSessao() {
         try {
-            int codigoSessao = Console.scanInt("\nInforme o código da sessão: ")-1;
-            getListaSessoes().remove(codigoSessao);
-            System.out.println("Sessão removida.");
+            int codigoSessao = Console.scanInt("\nInforme o código da sessão: ");
+            if (sessaoExistePorCodigo(codigoSessao)) {
+                getListaSessoes().remove(buscaIndiceSessao(codigoSessao));
+                System.out.println("Sessão removida.");
+            } else {
+                System.out.println("Sessao não encontrada.");
+            }
         } catch (Exception e) {
             System.out.println("Ocorreu um erro. Informe apenas o código da sessão");
         }
 
+    }
+
+    public int buscaIndiceSessao(int cod) {
+        int i = 0;
+        for (Sessao sessao : listaSessoes) {
+            if (sessao.getCodSessao() == (cod)) {
+                return i;
+            }
+            i++;
+        }
+        return 0;
     }
 
     public boolean sessaoExiste(Date horario) {
