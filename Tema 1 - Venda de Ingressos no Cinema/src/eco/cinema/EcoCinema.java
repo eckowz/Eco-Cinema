@@ -10,7 +10,7 @@ import view.MainUI;
 /**
  *
  * @author gserafini
- */
+ */ 
 public class EcoCinema {
 
     /**
