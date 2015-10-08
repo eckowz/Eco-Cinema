@@ -26,6 +26,10 @@ public class SalaUI {
                 case SalaMenu.OP_CADASTRAR:
                     cadastrarSala();
                     break;
+                case SalaMenu.OP_REMOVER:
+                    mostrarSalas();
+                    lista.removerSala();
+                    break;
                 case SalaMenu.OP_LISTAR:
                     mostrarSalas();
                     break;
