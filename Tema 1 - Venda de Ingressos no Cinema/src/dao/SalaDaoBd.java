@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Sala;
@@ -64,19 +66,76 @@ public class SalaDaoBd implements SalaDao {
     }
 
     public void atualizar(Sala sala) {
-        try{
-        String sql = "UPDATE sala SET idSala=?, quantidadeassentos=? WHERE idSala=?";
+        try {
+            String sql = "UPDATE sala SET idSala=?, quantidadeassentos=? WHERE idSala=?";
 
-        conectar(sql);
-        comando.setInt(1, sala.getIdSala());
-        comando.setInt(2, sala.getQuantidadeAssentos());
+            conectar(sql);
+            comando.setInt(1, sala.getIdSala());
+            comando.setInt(2, sala.getQuantidadeAssentos());
 
-        comando.executeUpdate();
-        } catch (SQLException ex){
+            comando.executeUpdate();
+        } catch (SQLException ex) {
             Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
         }
+    }
+
+    @Override
+    public List<Sala> listar() {
+        List<Sala> listaSalas = new ArrayList<>();
+
+        return (listaSalas);
+    }
+
+    @Override
+    public Sala procurarPorId(int idSala) {
+        String sql = "SELECT * FROM sala WHERE idSala = ?";
+
+        try {
+            conectar(sql);
+            comando.setInt(1, idSala);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                int qtdAssentos = resultado.getInt("quantidadeassentos");
+
+                Sala sala = new Sala(idSala, qtdAssentos);
+                return sala;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+
+        return (null);
+    }
+
+    @Override
+    public Sala procurarPorQuantidadeAssentos(int qtdAssentos) {
+        String sql = "SELECT * FROM sala WHERE quantidadeassentos = ?";
+
+        try {
+            conectar(sql);
+            comando.setInt(1, qtdAssentos);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                int idSala = resultado.getInt("idsala");
+
+                Sala sala = new Sala(idSala, qtdAssentos);
+                return sala;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+
+        return (null);
     }
 
     public void conectar(String sql) throws SQLException {

@@ -16,7 +16,7 @@ public interface SalaDao {
     public void inserir(Sala sala);
     public void deletar(Sala sala);
     public void atualizar(Sala sala);
-    //public List<Sala> listar();
-    //public Sala procurarPorId(int idSala);
-    //public Sala procurarPorQuantidadeAssentos(int qtdAssentos);
+    public List<Sala> listar();
+    public Sala procurarPorId(int idSala);
+    public Sala procurarPorQuantidadeAssentos(int qtdAssentos);
 }
