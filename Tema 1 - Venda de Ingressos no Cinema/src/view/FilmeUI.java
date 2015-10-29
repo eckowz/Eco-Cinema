@@ -63,6 +63,8 @@ public class FilmeUI {
                         } catch (Exception e) {
                             System.out.println("Ocorreu um erro ao salvar!");
                         }
+                    }else{
+                        System.out.println("Nenhum campo pode ser em branco.");
                     }
 
                 }
