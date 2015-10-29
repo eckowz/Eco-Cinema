@@ -1,0 +1,105 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import banco.ConnectionFactory;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Sala;
+
+/**
+ *
+ * @author 631120345
+ */
+public class SalaDaoBd implements SalaDao {
+
+    private Connection conexao;
+    private PreparedStatement comando;
+
+    @Override
+    public void inserir(Sala sala) {
+        int idSala = 0;
+        try {
+            String sql = "INSER INTO sala (idSala, quantidadeassentos) "
+                    + "VALUES(?,?)";
+
+            conectarObtendoId(sql);
+            comando.setInt(1, sala.getIdSala());
+            comando.setInt(2, sala.getQuantidadeAssentos());
+
+            comando.executeUpdate();
+
+            ResultSet resultado = comando.getGeneratedKeys();
+            if (resultado.next()) {
+                idSala = resultado.getInt(1);
+                sala.setIdSala(idSala);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+    }
+
+    @Override
+    public void deletar(Sala sala) {
+        try {
+            String sql = "DELETE FROM sala WHERE idSala = ?";
+
+            conectar(sql);
+            comando.setInt(1, sala.getIdSala());
+            comando.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+    }
+
+    public void atualizar(Sala sala) {
+        try{
+        String sql = "UPDATE sala SET idSala=?, quantidadeassentos=? WHERE idSala=?";
+
+        conectar(sql);
+        comando.setInt(1, sala.getIdSala());
+        comando.setInt(2, sala.getQuantidadeAssentos());
+
+        comando.executeUpdate();
+        } catch (SQLException ex){
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+    }
+
+    public void conectar(String sql) throws SQLException {
+        conexao = ConnectionFactory.getConnection();
+        comando = conexao.prepareStatement(sql);
+    }
+
+    public void conectarObtendoId(String sql) throws SQLException {
+        conexao = ConnectionFactory.getConnection();
+        comando = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+    }
+
+    public void fecharConexao() {
+        try {
+            if (comando != null) {
+                comando.close();
+            }
+            if (conexao != null) {
+                conexao.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+}
