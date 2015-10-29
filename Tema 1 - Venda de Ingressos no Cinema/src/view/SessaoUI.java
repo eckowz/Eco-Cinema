@@ -100,7 +100,7 @@ public class SessaoUI {
         for (Sessao horarioSessao : sessao.getListaSessoes()) {
             System.out.println(String.format("%-10s", horarioSessao.getCodSessao()) + "\t"
                     + String.format("%-20s", "|" + DateUtil.dateHourToString(horarioSessao.getHorario())) + "\t"
-                    + String.format("%-5s", "|" + horarioSessao.getSala().getIdSala()) + "\t"
+                    + String.format("%-5s", "|" + horarioSessao.getSala().getCodSala()) + "\t"
                     + String.format("%-20s", "|" + horarioSessao.getFilme().getNomeFilme())
             );
         }
@@ -116,7 +116,7 @@ public class SessaoUI {
         for (Sessao horario : sessao.getListaSessoes()) {
             System.out.println(String.format("%-10s", horario.getCodSessao()) + "\t"
                     + String.format("%-20s", "|" + DateUtil.dateHourToString(horario.getHorario())) + "\t"
-                    + String.format("%-5s", "|" + horario.getSala().getIdSala()) + "\t"
+                    + String.format("%-5s", "|" + horario.getSala().getCodSala()) + "\t"
                     + String.format("%-10s", "|" + horario.getSala().getQuantidadeAssentos()) + "\t"
                     + String.format("%-20s", "|" + horario.getFilme().getNomeFilme())
             );

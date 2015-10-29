@@ -45,7 +45,7 @@ public class RepositorioSalas {
     public int buscaIndiceSala(int cod) {
         int i = 0;
         for (Sala sala : listaSalas) {
-            if (sala.getIdSala() == (cod)) {
+            if (sala.getCodSala() == (cod)) {
                 return i;
             }
             i++;
@@ -59,7 +59,7 @@ public class RepositorioSalas {
 
     public boolean salaExiste(int codigoSala) {
         for (Sala sala : listaSalas) {
-            if (sala.getIdSala() == (codigoSala)) {
+            if (sala.getCodSala() == (codigoSala)) {
                 return true;
             }
         }
@@ -68,7 +68,7 @@ public class RepositorioSalas {
 
     public Sala buscarSala(int codigoSala) {
         for (Sala sala : listaSalas) {
-            if (sala.getIdSala() == (codigoSala)) {
+            if (sala.getCodSala() == (codigoSala)) {
                 return sala;
             }
         }

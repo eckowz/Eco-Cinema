@@ -31,11 +31,11 @@ public class SalaDaoBd implements SalaDao {
     public void inserir(Sala sala) {
         int idSala = 0;
         try {
-            String sql = "INSER INTO sala (idsala, quantidadeassentos) "
+            String sql = "INSER INTO sala (codSala, quantidadeAssentos) "
                     + "VALUES(?,?)";
 
             conectarObtendoId(sql);
-            comando.setInt(1, sala.getIdSala());
+            comando.setInt(1, sala.getCodSala());
             comando.setInt(2, sala.getQuantidadeAssentos());
 
             comando.executeUpdate();
@@ -55,7 +55,7 @@ public class SalaDaoBd implements SalaDao {
     @Override
     public void deletar(Sala sala) {
         try {
-            String sql = "DELETE FROM sala WHERE idsala = ?";
+            String sql = "DELETE FROM sala WHERE idSala = ?";
 
             conectar(sql);
             comando.setInt(1, sala.getIdSala());
@@ -70,14 +70,15 @@ public class SalaDaoBd implements SalaDao {
     @Override
     public void atualizar(Sala sala) {
         try {
-            String sql = "UPDATE sala SET idsala=?, quantidadeassentos=? "
+            String sql = "UPDATE sala SET codSala=?, quantidadeAssentos=? "
                     + "WHERE idsala=?";
 
             conectar(sql);
-            comando.setInt(1, sala.getIdSala());
+            comando.setInt(1, sala.getCodSala());
             comando.setInt(2, sala.getQuantidadeAssentos());
-
+            comando.setInt(3, sala.getIdSala());
             comando.executeUpdate();
+
         } catch (SQLException ex) {
             Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -98,9 +99,10 @@ public class SalaDaoBd implements SalaDao {
 
             while (resultado.next()) {
                 int idSala = resultado.getInt("idsala");
+                int codSala = resultado.getInt("codSala");
                 int qtdAssentos = resultado.getInt("quantidadeassentos");
 
-                Sala sala = new Sala(idSala, qtdAssentos);
+                Sala sala = new Sala(idSala, codSala, qtdAssentos);
                 listaSalas.add(sala);
             }
         } catch (SQLException ex) {
@@ -123,9 +125,10 @@ public class SalaDaoBd implements SalaDao {
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
-                int qtdAssentos = resultado.getInt("quantidadeassentos");
+                int codSala = resultado.getInt("codSala");
+                int qtdAssentos = resultado.getInt("quantidadeAssentos");
 
-                Sala sala = new Sala(idSala, qtdAssentos);
+                Sala sala = new Sala(idSala, codSala, qtdAssentos);
                 return sala;
             }
         } catch (SQLException ex) {
@@ -138,8 +141,35 @@ public class SalaDaoBd implements SalaDao {
     }
 
     @Override
+    public Sala procurarPorCodSala(int codSala) {
+        String sql = "SELECT * FROM sala WHERE codSala = ?";
+
+        try {
+            conectar(sql);
+            comando.setInt(1, codSala);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                int idSala = resultado.getInt("idSala");
+                int qtdAssentos = resultado.getInt("quantidadeAssentos");
+
+                Sala sala = new Sala(idSala, codSala, qtdAssentos);
+                return sala;
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+
+        return (null);
+    }
+
+    @Override
     public Sala procurarPorQuantidadeAssentos(int qtdAssentos) {
-        String sql = "SELECT * FROM sala WHERE quantidadeassentos = ?";
+        String sql = "SELECT * FROM sala WHERE quantidadeAssentos = ?";
 
         try {
             conectar(sql);
@@ -149,8 +179,8 @@ public class SalaDaoBd implements SalaDao {
 
             if (resultado.next()) {
                 int idSala = resultado.getInt("idsala");
-
-                Sala sala = new Sala(idSala, qtdAssentos);
+                int codSala = resultado.getInt("codSala");
+                Sala sala = new Sala(idSala, codSala, qtdAssentos);
                 return sala;
             }
         } catch (SQLException ex) {

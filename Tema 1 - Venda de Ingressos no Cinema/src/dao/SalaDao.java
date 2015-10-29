@@ -18,5 +18,6 @@ public interface SalaDao {
     public void atualizar(Sala sala);
     public List<Sala> listar();
     public Sala procurarPorId(int idSala);
+    public Sala procurarPorCodSala(int codSala);
     public Sala procurarPorQuantidadeAssentos(int qtdAssentos);
 }

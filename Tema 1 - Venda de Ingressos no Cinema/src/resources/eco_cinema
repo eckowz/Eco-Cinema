@@ -1,5 +1,6 @@
 create table sala(
 idSala serial primary key,
+codSala int,
 quantidadeAssentos int
 );
 

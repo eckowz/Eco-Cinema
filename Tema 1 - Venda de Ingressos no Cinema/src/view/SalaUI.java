@@ -1,7 +1,7 @@
 package view;
 
 import model.Sala;
-import repositorio.RepositorioSalas;
+import servico.SalaServico;
 import util.Console;
 import view.menu.SalaMenu;
 
@@ -11,10 +11,10 @@ import view.menu.SalaMenu;
  */
 public class SalaUI {
 
-    private RepositorioSalas lista;
+    private SalaServico servicoSala;
 
-    public SalaUI(RepositorioSalas lista) {
-        this.lista = lista;
+    public SalaUI() {
+        servicoSala = new SalaServico();
     }
 
     public void executar() {
@@ -27,8 +27,7 @@ public class SalaUI {
                     cadastrarSala();
                     break;
                 case SalaMenu.OP_REMOVER:
-                    mostrarSalas();
-                    lista.removerSala();
+                    removerSala();
                     break;
                 case SalaMenu.OP_LISTAR:
                     mostrarSalas();
@@ -43,13 +42,13 @@ public class SalaUI {
     }
 
     private void cadastrarSala() {
-        int codigo = Console.scanInt("Código: ");
-        if (lista.salaExiste(codigo)) {
+        int codigo = Console.scanInt("Código da Sala: ");
+        if (servicoSala.salaExisteCodSala(codigo)) {
             System.out.println("Código já existente no cadastro");
         } else {
             int qtdAssentos = Console.scanInt("Quantidade de assentos: ");
             try {
-                lista.addSalas(new Sala(codigo, qtdAssentos));
+                servicoSala.addSala(new Sala(codigo, qtdAssentos));
                 System.out.println("Sala " + codigo + " cadastrada com sucesso!");
             } catch (Exception e) {
                 System.out.println("Ocorreu um erro ao salvar!");
@@ -57,12 +56,27 @@ public class SalaUI {
         }
     }
 
+    private void removerSala() {
+        mostrarSalas();
+        try {
+            int codSala = Console.scanInt("\nInforme o código da sala: ");
+            if (servicoSala.salaExisteCodSala(codSala)) {
+                servicoSala.removerSala(servicoSala.procurarPorCodSala(codSala));
+                System.out.println("Sala " + codSala + "removida.");
+            } else {
+                System.out.println("Sala não encontrada.");
+            }
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro.");
+        }
+    }
+
     public void mostrarSalas() {
         System.out.println("-----------------------------\n");
         System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
                 + String.format("%-20s", "|QUANTIDADE DE ASSENTOS"));
-        for (Sala sala : lista.getListaSalas()) {
-            System.out.println(String.format("%-10s", sala.getIdSala()) + "\t"
+        for (Sala sala : servicoSala.listarSalas()) {
+            System.out.println(String.format("%-10s", sala.getCodSala()) + "\t"
                     + String.format("%-20s", "|" + sala.getQuantidadeAssentos()));
         }
     }
