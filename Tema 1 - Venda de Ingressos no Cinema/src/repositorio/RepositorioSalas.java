@@ -10,6 +10,11 @@ import java.util.List;
 import model.Sala;
 import util.Console;
 
+/**
+ * @deprecated Utilizar padrao Dao/Serviço - Inutilizado para integração com
+ * JDBC.
+ * @author 631120345
+ */
 public class RepositorioSalas {
 
     private List<Sala> listaSalas;
@@ -28,7 +33,7 @@ public class RepositorioSalas {
             if (salaExiste(codigoSala)) {
                 getListaSalas().remove(buscaIndiceSala(codigoSala));
                 System.out.println("Sala removida.");
-            }else{
+            } else {
                 System.out.println("Sala não encontrada.");
             }
         } catch (Exception e) {
