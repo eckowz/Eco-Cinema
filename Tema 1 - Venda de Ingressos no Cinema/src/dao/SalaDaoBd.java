@@ -19,6 +19,8 @@ import model.Sala;
 /**
  *
  * @author 631120345
+ *
+ * Metodos que realizam conexão com o banco para objeto Sala.
  */
 public class SalaDaoBd implements SalaDao {
 
@@ -29,7 +31,7 @@ public class SalaDaoBd implements SalaDao {
     public void inserir(Sala sala) {
         int idSala = 0;
         try {
-            String sql = "INSER INTO sala (idSala, quantidadeassentos) "
+            String sql = "INSER INTO sala (idsala, quantidadeassentos) "
                     + "VALUES(?,?)";
 
             conectarObtendoId(sql);
@@ -53,7 +55,7 @@ public class SalaDaoBd implements SalaDao {
     @Override
     public void deletar(Sala sala) {
         try {
-            String sql = "DELETE FROM sala WHERE idSala = ?";
+            String sql = "DELETE FROM sala WHERE idsala = ?";
 
             conectar(sql);
             comando.setInt(1, sala.getIdSala());
@@ -65,9 +67,11 @@ public class SalaDaoBd implements SalaDao {
         }
     }
 
+    @Override
     public void atualizar(Sala sala) {
         try {
-            String sql = "UPDATE sala SET idSala=?, quantidadeassentos=? WHERE idSala=?";
+            String sql = "UPDATE sala SET idsala=?, quantidadeassentos=? "
+                    + "WHERE idsala=?";
 
             conectar(sql);
             comando.setInt(1, sala.getIdSala());
@@ -84,6 +88,26 @@ public class SalaDaoBd implements SalaDao {
     @Override
     public List<Sala> listar() {
         List<Sala> listaSalas = new ArrayList<>();
+
+        String sql = "SELECT * FROM sala";
+
+        try {
+            conectar(sql);
+
+            ResultSet resultado = comando.executeQuery();
+
+            while (resultado.next()) {
+                int idSala = resultado.getInt("idsala");
+                int qtdAssentos = resultado.getInt("quantidadeassentos");
+
+                Sala sala = new Sala(idSala, qtdAssentos);
+                listaSalas.add(sala);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
 
         return (listaSalas);
     }
