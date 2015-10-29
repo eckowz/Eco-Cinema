@@ -10,10 +10,6 @@ import java.util.List;
 import model.Filme;
 import util.Console;
 
-/**
- *
- * @author lhries
- */
 public class RepositorioFilmes {
 
     private List<Filme> listaFilmes;

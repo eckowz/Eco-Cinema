@@ -62,7 +62,7 @@ public class SalaUI {
         System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
                 + String.format("%-20s", "|QUANTIDADE DE ASSENTOS"));
         for (Sala sala : lista.getListaSalas()) {
-            System.out.println(String.format("%-10s", sala.getCodigoSala()) + "\t"
+            System.out.println(String.format("%-10s", sala.getIdSala()) + "\t"
                     + String.format("%-20s", "|" + sala.getQuantidadeAssentos()));
         }
     }

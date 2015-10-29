@@ -10,10 +10,6 @@ import java.util.List;
 import model.Sala;
 import util.Console;
 
-/**
- *
- * @author lhries
- */
 public class RepositorioSalas {
 
     private List<Sala> listaSalas;
@@ -44,7 +40,7 @@ public class RepositorioSalas {
     public int buscaIndiceSala(int cod) {
         int i = 0;
         for (Sala sala : listaSalas) {
-            if (sala.getCodigoSala() == (cod)) {
+            if (sala.getIdSala() == (cod)) {
                 return i;
             }
             i++;
@@ -58,7 +54,7 @@ public class RepositorioSalas {
 
     public boolean salaExiste(int codigoSala) {
         for (Sala sala : listaSalas) {
-            if (sala.getCodigoSala() == (codigoSala)) {
+            if (sala.getIdSala() == (codigoSala)) {
                 return true;
             }
         }
@@ -67,7 +63,7 @@ public class RepositorioSalas {
 
     public Sala buscarSala(int codigoSala) {
         for (Sala sala : listaSalas) {
-            if (sala.getCodigoSala() == (codigoSala)) {
+            if (sala.getIdSala() == (codigoSala)) {
                 return sala;
             }
         }

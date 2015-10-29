@@ -13,19 +13,19 @@ import java.util.Objects;
  */
 public class Sala {
 
-    private int codigoSala, quantidadeAssentos;
+    private int idSala, quantidadeAssentos;
 
     public Sala(int codigoSala, int quantidadeAssentos) {
-        this.codigoSala = codigoSala;
+        this.idSala = codigoSala;
         this.quantidadeAssentos = quantidadeAssentos;
     }
 
-    public int getCodigoSala() {
-        return codigoSala;
+    public int getIdSala() {
+        return idSala;
     }
 
-    public void setCodigoSala(int codigoSala) {
-        this.codigoSala = codigoSala;
+    public void setIdSala(int idSala) {
+        this.idSala = idSala;
     }
 
     public int getQuantidadeAssentos() {
@@ -45,7 +45,7 @@ public class Sala {
             return false;
         }
         final Sala other = (Sala) obj;
-        if (!Objects.equals(this.codigoSala, other.codigoSala)) {
+        if (!Objects.equals(this.idSala, other.idSala)) {
             return false;
         }
         return true;
@@ -54,13 +54,13 @@ public class Sala {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.codigoSala);
+        hash = 59 * hash + Objects.hashCode(this.idSala);
         return hash;
     }
 
     @Override
     public String toString() {
-        return codigoSala + " - " + quantidadeAssentos;
+        return idSala + " - " + quantidadeAssentos;
     }
 
 }
