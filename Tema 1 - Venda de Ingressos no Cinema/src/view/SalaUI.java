@@ -27,6 +27,7 @@ public class SalaUI {
                     cadastrarSala();
                     break;
                 case SalaMenu.OP_REMOVER:
+                    mostrarSalas();
                     removerSala();
                     break;
                 case SalaMenu.OP_LISTAR:

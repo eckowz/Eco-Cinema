@@ -38,7 +38,7 @@ public class FilmeServico {
         return (new FilmeDaoBd().listar());
     }
 
-    public void removerFilme(Filme filme) {
+    public void deletarFilme(Filme filme) {
         new FilmeDaoBd().deletar(filme);
     }
 }

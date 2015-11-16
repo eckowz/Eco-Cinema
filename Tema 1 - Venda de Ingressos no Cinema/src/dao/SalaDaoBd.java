@@ -31,7 +31,7 @@ public class SalaDaoBd implements SalaDao {
     public void inserir(Sala sala) {
         int idSala = 0;
         try {
-            String sql = "INSER INTO sala (codSala, quantidadeAssentos) "
+            String sql = "INSERT INTO sala (codSala, quantidadeAssentos) "
                     + "VALUES(?,?)";
 
             conectarObtendoId(sql);

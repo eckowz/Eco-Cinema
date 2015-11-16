@@ -23,6 +23,12 @@ public class Filme {
         this.sinopseFilme = sinopseFilme;
     }
 
+    public Filme(String nomeFilme, String generoFilme, String sinopseFilme) {
+        this.nomeFilme = nomeFilme;
+        this.generoFilme = generoFilme;
+        this.sinopseFilme = sinopseFilme;
+    }
+
     public void setIdFilme(int idFilme) {
         this.idFilme = idFilme;
     }

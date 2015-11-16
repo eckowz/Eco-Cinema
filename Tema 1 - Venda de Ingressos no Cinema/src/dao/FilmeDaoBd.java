@@ -22,9 +22,9 @@ public class FilmeDaoBd implements FilmeDao {
 
     @Override
     public void inserir(Filme filme) {
-        int idFilme = 0;
+        int cod = 0;
         try {
-            String sql = "INSER INTO filme (nomeFilme, generoFilme, sinopseFilme) "
+            String sql = "INSERT INTO filme (nomefilme, generofilme, sinopsefilme) "
                     + "VALUES(?,?,?)";
 
             conectarObtendoId(sql);
@@ -36,8 +36,8 @@ public class FilmeDaoBd implements FilmeDao {
 
             ResultSet resultado = comando.getGeneratedKeys();
             if (resultado.next()) {
-                idFilme = resultado.getInt(1);
-                filme.setIdFilme(idFilme);
+                cod = resultado.getInt(1);
+                filme.setIdFilme(cod);
             }
         } catch (SQLException ex) {
             Logger.getLogger(FilmeDaoBd.class.getName()).log(Level.SEVERE, null, ex);

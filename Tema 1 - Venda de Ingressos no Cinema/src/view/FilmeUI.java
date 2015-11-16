@@ -1,9 +1,9 @@
 package view;
 
 import model.Filme;
-import repositorio.RepositorioFilmes;
-import util.Console;
 import view.menu.FilmeMenu;
+import servico.FilmeServico;
+import util.Console;
 
 /**
  *
@@ -11,10 +11,10 @@ import view.menu.FilmeMenu;
  */
 public class FilmeUI {
 
-    private RepositorioFilmes lista;
+    private FilmeServico filmeServico;
 
-    public FilmeUI(RepositorioFilmes lista) {
-        this.lista = lista;
+    public FilmeUI() {
+        this.filmeServico = new FilmeServico();
     }
 
     public void executar() {
@@ -28,7 +28,7 @@ public class FilmeUI {
                     break;
                 case FilmeMenu.OP_REMOVER:
                     mostrarFilmes();
-                    lista.removerFilme();
+                    deletarFilme();
                 case FilmeMenu.OP_LISTAR:
                     mostrarFilmes();
                     break;
@@ -43,34 +43,23 @@ public class FilmeUI {
 
     private void cadastrarFilme() {
         String nome = "", genero = "", sinopse = "";
-        int codigo = -1;
 
         do {
-            codigo = Console.scanInt("\nCódigo: ");
-            if (codigo == -1) {
-                System.out.println("Código inválido.");
-            } else {
-                if (lista.filmeExiste(codigo)) {
-                    System.out.println("Código já existente no cadastro.");
-                } else {
-                    nome = Console.scanString("Nome do filme: ").toUpperCase();
-                    genero = Console.scanString("Gênero: ").toUpperCase();
-                    sinopse = Console.scanString("Sinopse: ").toUpperCase();
-                    if (!(nome.equals("") || genero.equals("") || sinopse.equals(""))) {
-                        try {
-                            lista.addFilmes(new Filme(codigo, nome, genero, sinopse));
-                            System.out.println("Título " + nome + " cadastrado com sucesso!");
-                        } catch (Exception e) {
-                            System.out.println("Ocorreu um erro ao salvar!");
-                        }
-                    }else{
-                        System.out.println("Nenhum campo pode ser em branco.");
-                    }
-
+            nome = Console.scanString("Nome do filme: ").toUpperCase();
+            genero = Console.scanString("Gênero: ").toUpperCase();
+            sinopse = Console.scanString("Sinopse: ").toUpperCase();
+            if (!(nome.equals("") || genero.equals("") || sinopse.equals(""))) {
+                try {
+                    filmeServico.addFilme(new Filme(nome, genero, sinopse));
+                    System.out.println("Título " + nome + " cadastrado com sucesso!");
+                } catch (Exception e) {
+                    System.out.println("Ocorreu um erro ao salvar!");
                 }
-
+            } else {
+                System.out.println("Nenhum campo pode ser em branco.");
             }
-        } while (codigo == -1 || nome.equals("") || genero.equals("") || sinopse.equals(""));
+
+        } while (nome.equals("") || genero.equals("") || sinopse.equals(""));
     }
 
     public void mostrarFilmes() {
@@ -79,11 +68,15 @@ public class FilmeUI {
                 + String.format("%-20s", "|NOME DO FILME") + "\t"
                 + String.format("%-20s", "|GÊNERO") + "\t"
                 + String.format("%-20s", "|SINOPSE"));
-        for (Filme filme : lista.getListaFilmes()) {
-            System.out.println(String.format("%-10s", filme.getCodigoFilme()) + "\t"
+        for (Filme filme : filmeServico.listarFilmes()) {
+            System.out.println(String.format("%-10s", filme.getIdFilme()) + "\t"
                     + String.format("%-20s", "|" + filme.getNomeFilme()) + "\t"
                     + String.format("%-20s", "|" + filme.getGeneroFilme()) + "\t"
                     + String.format("%-20s", "|" + filme.getSinopseFilme()));
         }
+    }
+
+    private void deletarFilme() {
+        System.out.println("Nao implementado.");
     }
 }

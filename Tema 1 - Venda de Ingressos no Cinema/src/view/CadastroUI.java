@@ -9,13 +9,7 @@ import view.menu.CadastroMenu;
  */
 public class CadastroUI {
 
-    private SessaoUI sessaoUI;
-
     public CadastroUI() {
-        this.sessao = sessao;
-        this.listaSalas = listaSalas;
-        this.listaFilmes = listaFilmes;
-        this.sessaoUI = sessaoUI;
     }
 
     public void executar() {
@@ -25,13 +19,13 @@ public class CadastroUI {
             opcao = Console.scanInt("Digite sua opção:");
             switch (opcao) {
                 case CadastroMenu.OP_CADASTROFILME:
-                    new FilmeUI(listaFilmes).executar();
+                    new FilmeUI().executar();
                     break;
                 case CadastroMenu.OP_CADASTROSALA:
-                    new SalaUI(listaSalas).executar();
+                    new SalaUI().executar();
                     break;
                 case CadastroMenu.OP_CADASTROSESSAO:
-                    sessaoUI.executar();
+                    //sessaoUI.executar();
                     break;
                 case CadastroMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");
