@@ -25,7 +25,7 @@ public class CadastroUI {
                     new SalaUI().executar();
                     break;
                 case CadastroMenu.OP_CADASTROSESSAO:
-                    //sessaoUI.executar();
+                    new SessaoUI.executar();
                     break;
                 case CadastroMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");
