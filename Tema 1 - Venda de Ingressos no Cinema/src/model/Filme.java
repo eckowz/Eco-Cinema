@@ -13,18 +13,26 @@ import java.util.Objects;
  */
 public class Filme {
 
-    private int codigoFilme;
+    private int idFilme;
     private String nomeFilme, generoFilme, sinopseFilme;
 
-    public Filme(int codigoFilme, String nomeFilme, String generoFilme, String sinopseFilme) {
-        this.codigoFilme = codigoFilme;
+    public Filme(int idFilme, String nomeFilme, String generoFilme, String sinopseFilme) {
+        this.idFilme = idFilme;
         this.nomeFilme = nomeFilme;
         this.generoFilme = generoFilme;
         this.sinopseFilme = sinopseFilme;
     }
 
-    public int getCodigoFilme() {
-        return codigoFilme;
+    public void setIdFilme(int idFilme) {
+        this.idFilme = idFilme;
+    }
+
+    public void setNomeFilme(String nomeFilme) {
+        this.nomeFilme = nomeFilme;
+    }
+
+    public int getIdFilme() {
+        return idFilme;
     }
 
     public String getNomeFilme() {
@@ -56,7 +64,7 @@ public class Filme {
             return false;
         }
         final Filme other = (Filme) obj;
-        if (!Objects.equals(this.codigoFilme, other.codigoFilme)) {
+        if (!Objects.equals(this.idFilme, other.idFilme)) {
             return false;
         }
         return true;
@@ -65,13 +73,13 @@ public class Filme {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.codigoFilme);
+        hash = 59 * hash + Objects.hashCode(this.idFilme);
         return hash;
     }
 
     @Override
     public String toString() {
-        return codigoFilme + " - " + nomeFilme + ", " + generoFilme;
+        return idFilme + " - " + nomeFilme + ", " + generoFilme;
     }
 
 }

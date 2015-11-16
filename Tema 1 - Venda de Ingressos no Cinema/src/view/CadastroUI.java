@@ -1,8 +1,5 @@
 package view;
 
-import repositorio.RepositorioFilmes;
-import repositorio.RepositorioSalas;
-import repositorio.RepositorioSessao;
 import util.Console;
 import view.menu.CadastroMenu;
 
@@ -12,12 +9,9 @@ import view.menu.CadastroMenu;
  */
 public class CadastroUI {
 
-    private RepositorioSessao sessao;
-    private RepositorioFilmes listaFilmes;
-    private RepositorioSalas listaSalas;
     private SessaoUI sessaoUI;
 
-    public CadastroUI(RepositorioSessao sessao, RepositorioSalas listaSalas, RepositorioFilmes listaFilmes, SessaoUI sessaoUI) {
+    public CadastroUI() {
         this.sessao = sessao;
         this.listaSalas = listaSalas;
         this.listaFilmes = listaFilmes;

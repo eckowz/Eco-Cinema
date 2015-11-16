@@ -4,3 +4,8 @@ codSala int,
 quantidadeAssentos int
 );
 
+create table filme(
+idFilme serial primary key,
+nomeFilme varchar(30),
+generoFilme varchar(30),
+sinopseFilme varchar(30));
