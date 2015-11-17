@@ -13,7 +13,7 @@ public class FilmeServico {
 
     public boolean filmeExisteId(int idFilme) {
         FilmeDao dao = new FilmeDaoBd();
-        Filme filme = dao.procurarPorId(idFilme);
+        Filme filme = dao.procurarPorIdFilme(idFilme);
         return (filme != null);
     }
 

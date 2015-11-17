@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,9 +87,37 @@ public class SessaoDaoBd implements SessaoDao {
         return (listaSessaos);
 
     }
+//
+//    @Override
+//    public List<Sessao> procurarPorHorario(Date horario) {
+//        List<Sessao> listaHorarios = new ArrayList<>();
+//
+//        String sql = "SELECT * FROM sessao WHERE horario=?";
+//
+//        try {
+//            conectar(sql);
+//
+//            ResultSet resultado = comando.executeQuery();
+//
+//            java.sql.Timestamp timestSql = new java.sql.Timestamp(sessao.getHorario().getTime());
+//            comando.setTimestamp(1, timestSql);
+//            java.sql.Timestamp dataSql = resultado.getTimestamp("horario");
+//            java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
+//
+//            String sql = "DELETE FROM medicamento WHERE codigo=?";
+//
+//            conectar(sql);
+//            comando.setInt(1, medicamento.getCodigo());
+//            comando.executeUpdate();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(PacienteDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            fecharConexao();
+//        }
+//    }
 
     private Filme getFilme(int idFilme) {
-        return (new FilmeDaoBd().procurarPorId(idFilme));
+        return (new FilmeDaoBd().procurarPorIdFilme(idFilme));
     }
 
     private Sala getSala(int idSala) {
@@ -118,6 +147,5 @@ public class SessaoDaoBd implements SessaoDao {
         }
 
     }
-    
-    
+
 }

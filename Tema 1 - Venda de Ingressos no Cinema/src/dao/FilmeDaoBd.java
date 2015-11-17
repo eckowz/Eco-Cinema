@@ -111,7 +111,7 @@ public class FilmeDaoBd implements FilmeDao {
 
     @Override
     public Filme procurarPorIdFilme(int idFilme) {
-        String sql = "SELECT * FROM sala WHERE idSala = ?";
+        String sql = "SELECT * FROM filme WHERE idFilme = ?";
 
         try {
             conectar(sql);
@@ -120,9 +120,9 @@ public class FilmeDaoBd implements FilmeDao {
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
-                String nomeFilme = resultado.getString("nomeFilme");
-                String generoFilme = resultado.getString("generoFilme");
-                String sinopseFilme = resultado.getString("sinopseFilme");
+                String nomeFilme = resultado.getString("nomefilme");
+                String generoFilme = resultado.getString("generofilme");
+                String sinopseFilme = resultado.getString("sinopsefilme");
 
                 Filme filme = new Filme(idFilme, nomeFilme, generoFilme, sinopseFilme);
                 return filme;
