@@ -17,18 +17,17 @@ public class FilmeServico {
         return (filme != null);
     }
 
-    public boolean filmeExisteIdFilme(int idFilme) {
-        FilmeDao dao = new FilmeDaoBd();
-        Filme filme = dao.procurarPorId(idFilme);
-        return (filme != null);
-    }
-
-
 //    public Filme procurarPorCodFilme(int idFilme) {
 //        FilmeDao dao = new FilmeDaoBd();
 //        Filme filme = dao.procurarPorCodFilme(idFilme);
 //        return (filme);
 //    }
+    
+    public Filme procurarPorIdFilme(int idFilme) {
+        FilmeDao dao = new FilmeDaoBd();
+        Filme filme = dao.procurarPorIdFilme(idFilme);
+        return (filme);
+    }
 
     public void addFilme(Filme filme) {
         new FilmeDaoBd().inserir(filme);

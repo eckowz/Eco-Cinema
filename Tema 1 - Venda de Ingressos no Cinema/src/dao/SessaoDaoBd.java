@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Filme;
+import model.Sala;
+import model.Sessao;
 
 /**
  *
@@ -23,29 +26,23 @@ public class SessaoDaoBd implements SessaoDao {
     public void inserir(Sessao sessao) {
         int cod = 0;
         try {
-            String sql = "INSERT INTO sessao (horario, prontuario, idpaciente, finalizado) "
+            String sql = "INSERT INTO sessao (horario, idfilme, idsala, assentosdisponiveis) "
                     + "VALUES (?,?,?,?)";
 
             conectarObtendoId(sql);
             java.sql.Timestamp timestSql = new java.sql.Timestamp(sessao.getHorario().getTime());
             comando.setTimestamp(1, timestSql);
-            comando.setString(2, sessao.getProntuario());
-            comando.setInt(3, sessao.getPaciente().getId());
-            comando.setBoolean(4, sessao.estaFinalizada());
+            comando.setInt(2, sessao.getFilme().getIdFilme());
+            comando.setInt(3, sessao.getSala().getIdSala());
+            comando.setInt(4, sessao.getSala().getQuantidadeAssentos());
             comando.executeUpdate();
             //Obtém o resultSet para pegar o id
             ResultSet resultado = comando.getGeneratedKeys();
             if (resultado.next()) {
                 //seta o id para o objeto
                 cod = resultado.getInt(1);
-                sessao.setCodigo(cod);
+                sessao.setCodSessao(cod);
             }
-
-            //Inserir todos os itens de receituario no banco
-            for (ItemReceituario item : sessao.getReceituario()) {
-                this.inserirItemReceituario(cod, item);
-            }
-
         } catch (SQLException ex) {
             Logger.getLogger(SessaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -58,7 +55,7 @@ public class SessaoDaoBd implements SessaoDao {
     public List<Sessao> listar() {
         List<Sessao> listaSessaos = new ArrayList<>();
 
-        String sql = "SELECT * FROM sessao ORDER BY codigo";
+        String sql = "SELECT * FROM sessao ORDER BY idsessao";
 
         try {
             conectar(sql);
@@ -66,18 +63,15 @@ public class SessaoDaoBd implements SessaoDao {
             ResultSet resultado = comando.executeQuery();
 
             while (resultado.next()) {
-                int codigo = resultado.getInt("codigo");
+                int idSessao = resultado.getInt("idSessao");
                 //Trabalhando com data: lembrando dataSql -> dataUtil
                 java.sql.Timestamp dataSql = resultado.getTimestamp("horario");
                 java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
-                String prontuario = resultado.getString("prontuario");
+                Filme filme = this.getFilme(resultado.getInt("idfilme"));
+                Sala sala = this.getSala(resultado.getInt("idsala"));
+                int assentosDisponiveis = resultado.getInt("assentosdisponiveis");
 
-                Paciente paciente = this.getPaciente(resultado.getInt("idpaciente"));
-
-                Sessao sessao = new Sessao(codigo, dataUtil, paciente, prontuario);
-
-                List<ItemReceituario> itens = getItens(codigo);
-                sessao.setReceituario(itens);
+                Sessao sessao = new Sessao(idSessao, dataUtil, filme, sala, assentosDisponiveis);
 
                 listaSessaos.add(sessao);
 
@@ -91,6 +85,14 @@ public class SessaoDaoBd implements SessaoDao {
 
         return (listaSessaos);
 
+    }
+
+    private Filme getFilme(int idFilme) {
+        return (new FilmeDaoBd().procurarPorId(idFilme));
+    }
+
+    private Sala getSala(int idSala) {
+        return (new SalaDaoBd().procurarPorId(idSala));
     }
 
     public void conectar(String sql) throws SQLException {
@@ -116,4 +118,6 @@ public class SessaoDaoBd implements SessaoDao {
         }
 
     }
+    
+    
 }

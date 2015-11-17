@@ -1,6 +1,10 @@
 
 package servico;
 
+import dao.SessaoDaoBd;
+import java.util.List;
+import model.Sessao;
+
 /**
  *
  * @author gserafini
@@ -8,10 +12,10 @@ package servico;
 public class SessaoServico {
 
     public void adicionarSessao(Sessao sessao){
-        new SessaoDaoBd().inserir(consulta);
+        new SessaoDaoBd().inserir(sessao);
     }
     
-    public List<Consulta> listarSessoes() {
+    public List<Sessao> listarSessoes() {
         return (new SessaoDaoBd().listar());
     }
 }

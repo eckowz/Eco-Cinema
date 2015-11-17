@@ -4,19 +4,41 @@ import java.util.Date;
 
 public class Sessao implements Comparable<Sessao> {
 
-    private static int CODIGO_GERADO = 1;
     private int codSessao;
     private Date horario;
     private Filme filme;
     private Sala sala;
     private int assentosDisponiveis;
 
-    public Sessao(Date horario, Filme filme, Sala sala) {
-        this.codSessao = CODIGO_GERADO;
-        CODIGO_GERADO++;
+    public Sessao(int codSessao, Date horario, Filme filme, Sala sala, int assentosDisponiveis) {
+        this.codSessao = codSessao;
         this.horario = horario;
         this.filme = filme;
         this.sala = sala;
+        this.assentosDisponiveis = assentosDisponiveis;
+    }
+
+    public Sessao(Date horario, Filme filme, Sala sala, int assentosDisponiveis) {
+        this.horario = horario;
+        this.filme = filme;
+        this.sala = sala;
+        this.assentosDisponiveis = assentosDisponiveis;
+    }
+
+    public void setCodSessao(int codSessao) {
+        this.codSessao = codSessao;
+    }
+
+    public void setHorario(Date horario) {
+        this.horario = horario;
+    }
+
+    public int getAssentosDisponiveis() {
+        return assentosDisponiveis;
+    }
+
+    public void setAssentosDisponiveis(int assentosDisponiveis) {
+        this.assentosDisponiveis = assentosDisponiveis;
     }
 
     public int getCodSessao() {

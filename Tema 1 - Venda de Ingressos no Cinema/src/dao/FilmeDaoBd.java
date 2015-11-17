@@ -110,7 +110,7 @@ public class FilmeDaoBd implements FilmeDao {
     }
 
     @Override
-    public Filme procurarPorId(int idFilme) {
+    public Filme procurarPorIdFilme(int idFilme) {
         String sql = "SELECT * FROM sala WHERE idSala = ?";
 
         try {

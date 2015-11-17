@@ -6,6 +6,7 @@ import model.Filme;
 import model.Sala;
 import servico.FilmeServico;
 import servico.SalaServico;
+import servico.SessaoServico;
 import util.Console;
 import util.DateUtil;
 import view.menu.SessaoMenu;
@@ -14,8 +15,12 @@ public class SessaoUI {
 
     private FilmeServico filmeServico;
     private SalaServico salaServico;
-    
+    private SessaoServico sessaoServico;
+
     public SessaoUI() {
+        this.filmeServico = new FilmeServico();
+        this.salaServico = new SalaServico();
+        this.sessaoServico = new SessaoServico();
     }
 
     public void executar() {
@@ -51,17 +56,18 @@ public class SessaoUI {
         } while (opcao != SessaoMenu.OP_VOLTAR);
     }
 
-    private void cadastrarHorario() {
+    private void cadastrarSessao() {
         System.out.println("Lista de salas existentes: ");
-        new SalaUI(listaSalas).mostrarSalas();
+        new SalaUI().mostrarSalas();
         int codigoSala = Console.scanInt("\nInforme o código da sala: ");
-
-        if (listaSalas.salaExiste(codigoSala)) {
+        Sala sala = salaServico.procurarPorCodSala(codigoSala);
+        if (salaServico.salaExisteId(codigoSala)) {
             System.out.println("Lista de filmes disponiveis: ");
-            new FilmeUI(listaFilmes).mostrarFilmes();
+            new FilmeUI().mostrarFilmes();
             int codigoFilme = Console.scanInt("\nInforme o código do filme: ");
-
-            if (listaFilmes.filmeExiste(codigoFilme)) {
+            Filme filme = filmeServico.procurarPorIdFilme(codigoFilme);
+            
+            if (filmeServico.filmeExisteId(codigoFilme)) {
                 Filme filme = listaFilmes.buscarFilme(codigoFilme);
                 Sala sala = listaSalas.buscarSala(codigoSala);
                 String dataHora = Console.scanString("Data/Hora (dd/mm/aaaa hh:mm):");
@@ -117,8 +123,6 @@ public class SessaoUI {
             );
         }
     }
-
-
 
     private void editarHorario() {
         //Definir o método
