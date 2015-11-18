@@ -103,7 +103,7 @@ public class SessaoUI {
             System.out.println(String.format("%-10s", horarioSessao.getCodSessao()) + "\t"
                     + String.format("%-20s", "|" + DateUtil.dateHourToString(horarioSessao.getHorario())) + "\t"
                     + String.format("%-20s", "|" + horarioSessao.getFilme().getNomeFilme()) + "\t"
-                    + String.format("%-5s", "|" + horarioSessao.getSala().getCodSala())
+                    + String.format("%-5s", "|" + horarioSessao.getAssentosDisponiveis())
             );
         }
     }
