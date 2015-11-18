@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Sessao implements Comparable<Sessao> {
 
-    private int codSessao;
+    private int idSessao;
     private Date horario;
     private Filme filme;
     private Sala sala;
     private int assentosDisponiveis;
 
-    public Sessao(int codSessao, Date horario, Filme filme, Sala sala, int assentosDisponiveis) {
-        this.codSessao = codSessao;
+    public Sessao(int idSessao, Date horario, Filme filme, Sala sala, int assentosDisponiveis) {
+        this.idSessao = idSessao;
         this.horario = horario;
         this.filme = filme;
         this.sala = sala;
@@ -25,8 +25,8 @@ public class Sessao implements Comparable<Sessao> {
         this.assentosDisponiveis = assentosDisponiveis;
     }
 
-    public void setCodSessao(int codSessao) {
-        this.codSessao = codSessao;
+    public void setIdSessao(int idSessao) {
+        this.idSessao = idSessao;
     }
 
     public void setHorario(Date horario) {
@@ -41,8 +41,8 @@ public class Sessao implements Comparable<Sessao> {
         this.assentosDisponiveis = assentosDisponiveis;
     }
 
-    public int getCodSessao() {
-        return codSessao;
+    public int getIdSessao() {
+        return idSessao;
     }
 
     public Date getHorario() {

@@ -16,5 +16,6 @@ public interface SessaoDao {
     //public void atualizar(Sessao sessao);
     public List<Sessao> listar();
 
+    public Sessao procurarPorIdSessao(int idSessao);
     //public List<Sessao>  procurarPorHorario(Date horario);
 }

@@ -42,7 +42,7 @@ public class SessaoDaoBd implements SessaoDao {
             if (resultado.next()) {
                 //seta o id para o objeto
                 cod = resultado.getInt(1);
-                sessao.setCodSessao(cod);
+                sessao.setIdSessao(cod);
             }
         } catch (SQLException ex) {
             Logger.getLogger(SessaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,6 +115,37 @@ public class SessaoDaoBd implements SessaoDao {
 //            fecharConexao();
 //        }
 //    }
+
+    @Override
+    public Sessao procurarPorIdSessao(int idSessao) {
+        String sql = "SELECT * FROM sessao WHERE idSessao = ?";
+
+        try {
+            conectar(sql);
+            comando.setInt(1, idSessao);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                java.sql.Timestamp dataSql = resultado.getTimestamp("horario");
+                java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
+                Filme filme = this.getFilme(resultado.getInt("idfilme"));
+                Sala sala = this.getSala(resultado.getInt("idsala"));
+                int assentosDisponiveis = resultado.getInt("assentosdisponiveis");
+
+                Sessao sessao = new Sessao(idSessao, dataUtil, filme, sala, assentosDisponiveis);
+
+                return sessao;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SessaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }
+
+        return (null);
+    }
 
     private Filme getFilme(int idFilme) {
         return (new FilmeDaoBd().procurarPorIdFilme(idFilme));

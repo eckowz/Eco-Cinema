@@ -27,7 +27,7 @@ public class MainUI {
 
             switch (opcao) {
                 case MainMenu.OP_VENDAINGRESSOS:
-                    //new VendaIngressoUI(listaSessoes, sessaoUI).executar();
+                    new VendaIngressoUI().executar();
                     break;
                 case MainMenu.OP_CADASTROS:
                     new CadastroUI().executar();

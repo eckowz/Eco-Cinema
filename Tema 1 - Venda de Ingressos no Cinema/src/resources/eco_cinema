@@ -15,4 +15,10 @@ idsessao serial primary key,
 horario timestamp,
 idfilme int REFERENCES filme(idfilme),
 idsala int REFERENCES sala(idsala),
-assentosdisponiveis int);
+assentosDisponiveis int);
+
+create table venda_ingressos(
+idvenda serial primary key,
+horarioVenda timestamp,
+idsessao int REFERENCES sessao(idsessao)
+);
