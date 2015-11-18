@@ -5,6 +5,8 @@
  */
 package view;
 
+import servico.SessaoServico;
+import servico.VendaIngressoServico;
 import util.Console;
 import view.menu.VendaIngressoMenu;
 
@@ -14,8 +16,12 @@ import view.menu.VendaIngressoMenu;
  */
 public class VendaIngressoUI {
 
-    public VendaIngressoUI() {
+    private VendaIngressoServico vendaIngressoServico;
+    private SessaoServico sessaoServico;
 
+    public VendaIngressoUI() {
+        this.vendaIngressoServico = new VendaIngressoServico();
+        this.sessaoServico = new SessaoServico();
     }
 
     public void executar() {
@@ -28,7 +34,7 @@ public class VendaIngressoUI {
                     registraVenda();
                     break;
                 case VendaIngressoMenu.OP_LISTASESSAO:
-                    sessaoUI.listarHorariosComAssentos();
+                    sessaoServico.listarSessoes();
                     break;
                 case VendaIngressoMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");
@@ -41,19 +47,18 @@ public class VendaIngressoUI {
 
     private void registraVenda() {
         int cod = 0;
-        sessaoUI.listarHorariosComAssentos();
+        sessaoServico.listarSessoes();
         cod = Console.scanInt("Informe o código da sessão para a venda: ");
-        if (sessao.sessaoExistePorCodigo(cod)) {
-            if(sessao.temAssento(cod)){
-                sessao.ocupaAssento(cod);
-                System.out.println("Assentos disponiveis: " + sessao.listarAssentosDisponiveisPorSessao(cod) + ".");
-            }else{
+        //if (sessao.sessaoExistePorCodigo(cod)) {
+            if (sessaoServico.assentosDisponiveis(cod)>0) {
+                //sessao.ocupaAssento(cod);
+                //System.out.println("Assentos disponiveis: " + sessao.listarAssentosDisponiveisPorSessao(cod) + ".");
+            } else {
                 System.out.println("Não há assentos disponiveis.");
             }
-        }else{
-            System.out.println("Sessão não localizada.");
-        }
+        //} else {
+        //    System.out.println("Sessão não localizada.");
+        //}
     }
-    
-    
+
 }

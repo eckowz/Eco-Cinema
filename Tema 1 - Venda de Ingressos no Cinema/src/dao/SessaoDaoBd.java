@@ -54,7 +54,7 @@ public class SessaoDaoBd implements SessaoDao {
 
     @Override
     public List<Sessao> listar() {
-        List<Sessao> listaSessaos = new ArrayList<>();
+        List<Sessao> listaSessao = new ArrayList<>();
 
         String sql = "SELECT * FROM sessao ORDER BY idsessao";
 
@@ -74,7 +74,7 @@ public class SessaoDaoBd implements SessaoDao {
 
                 Sessao sessao = new Sessao(idSessao, dataUtil, filme, sala, assentosDisponiveis);
 
-                listaSessaos.add(sessao);
+                listaSessao.add(sessao);
 
             }
 
@@ -84,37 +84,9 @@ public class SessaoDaoBd implements SessaoDao {
             fecharConexao();
         }
 
-        return (listaSessaos);
+        return (listaSessao);
 
     }
-//
-//    @Override
-//    public List<Sessao> procurarPorHorario(Date horario) {
-//        List<Sessao> listaHorarios = new ArrayList<>();
-//
-//        String sql = "SELECT * FROM sessao WHERE horario=?";
-//
-//        try {
-//            conectar(sql);
-//
-//            ResultSet resultado = comando.executeQuery();
-//
-//            java.sql.Timestamp timestSql = new java.sql.Timestamp(sessao.getHorario().getTime());
-//            comando.setTimestamp(1, timestSql);
-//            java.sql.Timestamp dataSql = resultado.getTimestamp("horario");
-//            java.util.Date dataUtil = new java.util.Date(dataSql.getTime());
-//
-//            String sql = "DELETE FROM medicamento WHERE codigo=?";
-//
-//            conectar(sql);
-//            comando.setInt(1, medicamento.getCodigo());
-//            comando.executeUpdate();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(PacienteDaoBd.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            fecharConexao();
-//        }
-//    }
 
     @Override
     public Sessao procurarPorIdSessao(int idSessao) {
@@ -147,6 +119,27 @@ public class SessaoDaoBd implements SessaoDao {
         return (null);
     }
 
+    @Override
+    public void deletar(Sessao sessao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void atualizar(Sessao sessao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Sessao> procurarPorHorario(Date horario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int assentosDisponiveis(int idSessao) {
+        Sessao sessao = procurarPorIdSessao(idSessao);
+        return sessao.getAssentosDisponiveis();
+    }
+    
     private Filme getFilme(int idFilme) {
         return (new FilmeDaoBd().procurarPorIdFilme(idFilme));
     }

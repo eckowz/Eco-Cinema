@@ -1,4 +1,3 @@
-
 package servico;
 
 import dao.SessaoDaoBd;
@@ -11,11 +10,15 @@ import model.Sessao;
  */
 public class SessaoServico {
 
-    public void adicionarSessao(Sessao sessao){
+    public void adicionarSessao(Sessao sessao) {
         new SessaoDaoBd().inserir(sessao);
     }
-    
+
     public List<Sessao> listarSessoes() {
         return (new SessaoDaoBd().listar());
+    }
+
+    public int assentosDisponiveis(int idSessao) {
+        return (new SessaoDaoBd().assentosDisponiveis(idSessao));
     }
 }
