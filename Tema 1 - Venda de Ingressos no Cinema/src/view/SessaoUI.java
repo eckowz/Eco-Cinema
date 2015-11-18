@@ -62,7 +62,7 @@ public class SessaoUI {
         int codigoSala = Console.scanInt("\nInforme o código da sala: ");
         Sala sala = salaServico.procurarPorCodSala(codigoSala);
 
-        if (salaServico.salaExisteId(sala.getIdSala())) {
+        if (sala!=null) {
             System.out.println("Lista de filmes disponiveis: ");
             new FilmeUI().mostrarFilmes();
             int codigoFilme = Console.scanInt("\nInforme o código do filme: ");
