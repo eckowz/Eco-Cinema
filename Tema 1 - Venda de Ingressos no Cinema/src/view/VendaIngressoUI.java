@@ -9,6 +9,7 @@ import servico.SessaoServico;
 import servico.VendaIngressoServico;
 import util.Console;
 import view.menu.VendaIngressoMenu;
+import model.Sessao;
 
 /**
  *
@@ -34,7 +35,7 @@ public class VendaIngressoUI {
                     registraVenda();
                     break;
                 case VendaIngressoMenu.OP_LISTASESSAO:
-                    sessaoServico.listarSessoes();
+                    new SessaoUI().listarHorarios();
                     break;
                 case VendaIngressoMenu.OP_VOLTAR:
                     System.out.println("Retornando ao menu anterior..");
@@ -47,18 +48,18 @@ public class VendaIngressoUI {
 
     private void registraVenda() {
         int cod = 0;
-        sessaoServico.listarSessoes();
+        new SessaoUI().listarHorarios();
         cod = Console.scanInt("Informe o código da sessão para a venda: ");
-        //if (sessao.sessaoExistePorCodigo(cod)) {
+        if (sessaoServico.sessaoExiste(cod)) {
             if (sessaoServico.assentosDisponiveis(cod)>0) {
-                //sessao.ocupaAssento(cod);
-                //System.out.println("Assentos disponiveis: " + sessao.listarAssentosDisponiveisPorSessao(cod) + ".");
+                sessaoServico.ocupaAssento(sessaoServico.procurarPorIdSessao(cod));
+                System.out.println("Assentos disponiveis: " + sessaoServico.assentosDisponiveis(cod) + ".");
             } else {
                 System.out.println("Não há assentos disponiveis.");
             }
-        //} else {
-        //    System.out.println("Sessão não localizada.");
-        //}
+        } else {
+            System.out.println("Sessão não localizada.");
+        }
     }
 
 }

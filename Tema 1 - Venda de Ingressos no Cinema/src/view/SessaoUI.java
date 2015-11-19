@@ -1,6 +1,8 @@
 package view;
 
 import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.List;
 import model.Sessao;
 import model.Filme;
 import model.Sala;
@@ -57,14 +59,15 @@ public class SessaoUI {
     }
 
     private void cadastrarSessao() {
+        try{
         System.out.println("Lista de salas existentes: ");
-        salaServico.listarSalas();
+        new SalaUI().mostrarSalas();
         int codigoSala = Console.scanInt("\nInforme o código da sala: ");
         Sala sala = salaServico.procurarPorCodSala(codigoSala);
 
         if (sala!=null) {
             System.out.println("Lista de filmes disponiveis: ");
-            filmeServico.listarFilmes();
+            new FilmeUI().mostrarFilmes();
             int codigoFilme = Console.scanInt("\nInforme o código do filme: ");
             Filme filme = filmeServico.procurarPorIdFilme(codigoFilme);
 
@@ -90,6 +93,9 @@ public class SessaoUI {
 
         } else {
             System.out.println("Sala não encontrada!");
+        }
+        }catch(InputMismatchException ex){
+            System.out.println("Código inválido.");
         }
     }
 

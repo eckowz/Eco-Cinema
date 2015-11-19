@@ -1,5 +1,6 @@
 package view;
 
+import java.util.InputMismatchException;
 import model.Sala;
 import servico.SalaServico;
 import util.Console;
@@ -43,17 +44,21 @@ public class SalaUI {
     }
 
     private void cadastrarSala() {
-        int codigo = Console.scanInt("Código da Sala: ");
-        if (servicoSala.salaExisteCodSala(codigo)) {
-            System.out.println("Código já existente no cadastro");
-        } else {
-            int qtdAssentos = Console.scanInt("Quantidade de assentos: ");
-            try {
-                servicoSala.addSala(new Sala(codigo, qtdAssentos));
-                System.out.println("Sala " + codigo + " cadastrada com sucesso!");
-            } catch (Exception e) {
-                System.out.println("Ocorreu um erro ao salvar!");
+        try {
+            int codigo = Console.scanInt("Código da Sala: ");
+            if (servicoSala.salaExisteCodSala(codigo)) {
+                System.out.println("Código já existente no cadastro");
+            } else {
+                int qtdAssentos = Console.scanInt("Quantidade de assentos: ");
+                try {
+                    servicoSala.addSala(new Sala(codigo, qtdAssentos));
+                    System.out.println("Sala " + codigo + " cadastrada com sucesso!");
+                } catch (Exception e) {
+                    System.out.println("Ocorreu um erro ao salvar!");
+                }
             }
+        } catch (InputMismatchException ex) {
+            System.out.println("Somente números para código da sala.");
         }
     }
 

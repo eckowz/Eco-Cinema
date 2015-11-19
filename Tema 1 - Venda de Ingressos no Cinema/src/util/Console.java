@@ -12,13 +12,9 @@ public class Console {
     }
 
     public static int scanInt(Object out) {
-        try {
-            System.out.print(out);
-            Scanner scanner = new Scanner(System.in);
-            return (scanner.nextInt());
-        } catch (InputMismatchException e) {
-        }
-        return -1;
+        System.out.print(out);
+        Scanner scanner = new Scanner(System.in);
+        return (scanner.nextInt());
     }
 
     public static double scanDouble(Object out) {

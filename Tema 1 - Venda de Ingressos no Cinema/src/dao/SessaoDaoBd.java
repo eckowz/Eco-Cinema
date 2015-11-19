@@ -125,13 +125,13 @@ public class SessaoDaoBd implements SessaoDao {
     }
 
     @Override
-    public void atualizar(Sessao sessao) {
+    public void ocuparAssento(Sessao sessao) {
         try {
             String sql = "UPDATE sessao SET assentosdisponiveis=?"
                     + "WHERE idsessao=?";
 
             conectar(sql);
-            comando.setInt(1, sessao.getAssentosDisponiveis());
+            comando.setInt(1, sessao.getAssentosDisponiveis() - 1);
             comando.setInt(2, sessao.getIdSessao());
             comando.executeUpdate();
 
@@ -139,7 +139,7 @@ public class SessaoDaoBd implements SessaoDao {
             Logger.getLogger(SessaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             fecharConexao();
-        }        
+        }
     }
 
     @Override
@@ -152,7 +152,12 @@ public class SessaoDaoBd implements SessaoDao {
         Sessao sessao = procurarPorIdSessao(idSessao);
         return sessao.getAssentosDisponiveis();
     }
-    
+
+    @Override
+    public Boolean sessaoExiste(int idSessao) {
+        return procurarPorIdSessao(idSessao)!=null;
+    }
+
     private Filme getFilme(int idFilme) {
         return (new FilmeDaoBd().procurarPorIdFilme(idFilme));
     }

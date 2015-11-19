@@ -23,6 +23,15 @@ public class SessaoServico {
     }
 
     public void ocupaAssento(Sessao sessao) {
-        new SessaoDaoBd().atualizar(sessao);
+        new SessaoDaoBd().ocuparAssento(sessao);
+    }
+    
+    public Boolean sessaoExiste(int idSessao){
+        return(new SessaoDaoBd().sessaoExiste(idSessao));
+        
+    }
+
+    public Sessao procurarPorIdSessao(int idSessao) {
+        return(new SessaoDaoBd().procurarPorIdSessao(idSessao));
     }
 }
