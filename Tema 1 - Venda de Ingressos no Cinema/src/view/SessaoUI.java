@@ -58,13 +58,13 @@ public class SessaoUI {
 
     private void cadastrarSessao() {
         System.out.println("Lista de salas existentes: ");
-        new SalaUI().mostrarSalas();
+        salaServico.listarSalas();
         int codigoSala = Console.scanInt("\nInforme o código da sala: ");
         Sala sala = salaServico.procurarPorCodSala(codigoSala);
 
         if (sala!=null) {
             System.out.println("Lista de filmes disponiveis: ");
-            new FilmeUI().mostrarFilmes();
+            filmeServico.listarFilmes();
             int codigoFilme = Console.scanInt("\nInforme o código do filme: ");
             Filme filme = filmeServico.procurarPorIdFilme(codigoFilme);
 
