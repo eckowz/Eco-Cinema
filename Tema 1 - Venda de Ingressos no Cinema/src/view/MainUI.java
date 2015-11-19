@@ -33,6 +33,7 @@ public class MainUI {
                     new CadastroUI().executar();
                     break;
                 case MainMenu.OP_RELATORIOS:
+                    System.out.println("Não implementado.");
                     break;
                 case MainMenu.OP_SAIR:
                     System.out.println("Aplicação finalizada!!!");
