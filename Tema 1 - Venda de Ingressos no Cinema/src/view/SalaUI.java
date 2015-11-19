@@ -62,16 +62,21 @@ public class SalaUI {
     }
 
     private void removerSala() {
-        try {
-            int codSala = Console.scanInt("\nInforme o código da sala: ");
-            if (salaServico.salaExisteCodSala(codSala)) {
-                salaServico.removerSala(salaServico.procurarPorCodSala(codSala));
-                System.out.println("Sala " + codSala + " removida.");
-            } else {
-                System.out.println("Sala não encontrada.");
+        if (salaServico.listarSalas().isEmpty()) {
+            System.out.println("Nenhum item cadastrado.");
+        } else {
+            mostrarSalas();
+            try {
+                int codSala = Console.scanInt("\nInforme o código da sala: ");
+                if (salaServico.salaExisteCodSala(codSala)) {
+                    salaServico.removerSala(salaServico.procurarPorCodSala(codSala));
+                    System.out.println("Sala " + codSala + " removida.");
+                } else {
+                    System.out.println("Sala não encontrada.");
+                }
+            } catch (Exception e) {
+                System.out.println("Ocorreu um erro.");
             }
-        } catch (Exception e) {
-            System.out.println("Ocorreu um erro.");
         }
     }
 
