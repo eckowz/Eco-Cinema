@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.util.InputMismatchException;
 import servico.SessaoServico;
 import servico.VendaIngressoServico;
 import util.Console;
@@ -49,16 +50,20 @@ public class VendaIngressoUI {
     private void registraVenda() {
         int cod = 0;
         new SessaoUI().listarHorarios();
-        cod = Console.scanInt("Informe o código da sessão para a venda: ");
-        if (sessaoServico.sessaoExiste(cod)) {
-            if (sessaoServico.assentosDisponiveis(cod)>0) {
-                sessaoServico.ocupaAssento(sessaoServico.procurarPorIdSessao(cod));
-                System.out.println("Assentos disponiveis: " + sessaoServico.assentosDisponiveis(cod) + ".");
+        try {
+            cod = Console.scanInt("Informe o código da sessão para a venda: ");
+            if (sessaoServico.sessaoExiste(cod)) {
+                if (sessaoServico.assentosDisponiveis(cod) > 0) {
+                    sessaoServico.ocupaAssento(sessaoServico.procurarPorIdSessao(cod));
+                    System.out.println("Assentos disponiveis: " + sessaoServico.assentosDisponiveis(cod) + ".");
+                } else {
+                    System.out.println("Não há assentos disponiveis.");
+                }
             } else {
-                System.out.println("Não há assentos disponiveis.");
+                System.out.println("Sessão não localizada.");
             }
-        } else {
-            System.out.println("Sessão não localizada.");
+        } catch (InputMismatchException ex) {
+            System.out.println("Código inválido.");
         }
     }
 
