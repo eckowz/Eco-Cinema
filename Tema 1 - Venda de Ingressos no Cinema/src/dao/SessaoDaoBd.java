@@ -126,7 +126,20 @@ public class SessaoDaoBd implements SessaoDao {
 
     @Override
     public void atualizar(Sessao sessao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "UPDATE sessao SET assentosdisponiveis=?"
+                    + "WHERE idsessao=?";
+
+            conectar(sql);
+            comando.setInt(1, sessao.getAssentosDisponiveis());
+            comando.setInt(2, sessao.getIdSessao());
+            comando.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SessaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            fecharConexao();
+        }        
     }
 
     @Override

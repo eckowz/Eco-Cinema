@@ -21,4 +21,8 @@ public class SessaoServico {
     public int assentosDisponiveis(int idSessao) {
         return (new SessaoDaoBd().assentosDisponiveis(idSessao));
     }
+
+    public void ocupaAssento(Sessao sessao) {
+        new SessaoDaoBd().atualizar(sessao);
+    }
 }
