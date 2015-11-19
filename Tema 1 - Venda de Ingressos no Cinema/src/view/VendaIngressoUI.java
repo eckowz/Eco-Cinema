@@ -10,7 +10,6 @@ import servico.SessaoServico;
 import servico.VendaIngressoServico;
 import util.Console;
 import view.menu.VendaIngressoMenu;
-import model.Sessao;
 
 /**
  *
