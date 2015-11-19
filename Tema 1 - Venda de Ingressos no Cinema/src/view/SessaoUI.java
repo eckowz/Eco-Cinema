@@ -128,6 +128,21 @@ public class SessaoUI {
     }
 
     private void removerSessao() {
-        System.out.println("Não implementado.");
+        if (sessaoServico.listarSessoes().isEmpty()) {
+            System.out.println("Nenhum item cadastrado.");
+        } else {
+            listarHorarios();
+            try {
+                int idSessao = Console.scanInt("\nInforme o código da sessão: ");
+                if (sessaoServico.sessaoExiste(idSessao)) {
+                    sessaoServico.removerSessao(sessaoServico.procurarPorIdSessao(idSessao));
+                    System.out.println("Sessão " + idSessao + " removida.");
+                } else {
+                    System.out.println("Sessão não encontrada.");
+                }
+            } catch (Exception e) {
+                System.out.println("Ocorreu um erro.");
+            }
+        }
     }
 }

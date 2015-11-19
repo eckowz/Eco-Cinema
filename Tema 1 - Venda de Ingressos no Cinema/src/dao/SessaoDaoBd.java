@@ -121,7 +121,17 @@ public class SessaoDaoBd implements SessaoDao {
 
     @Override
     public void deletar(Sessao sessao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "DELETE FROM sessao WHERE idSessao = ?";
+
+            conectar(sql);
+            comando.setInt(1, sessao.getIdSessao());
+            comando.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SessaoDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            fecharConexao();
+        }
     }
 
     @Override
@@ -155,7 +165,7 @@ public class SessaoDaoBd implements SessaoDao {
 
     @Override
     public Boolean sessaoExiste(int idSessao) {
-        return procurarPorIdSessao(idSessao)!=null;
+        return procurarPorIdSessao(idSessao) != null;
     }
 
     private Filme getFilme(int idFilme) {
