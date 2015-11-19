@@ -27,8 +27,8 @@ public class FilmeUI {
                     cadastrarFilme();
                     break;
                 case FilmeMenu.OP_REMOVER:
-                    mostrarFilmes();
                     deletarFilme();
+                    break;
                 case FilmeMenu.OP_LISTAR:
                     mostrarFilmes();
                     break;
@@ -63,16 +63,20 @@ public class FilmeUI {
     }
 
     public void mostrarFilmes() {
-        System.out.println("-----------------------------\n");
-        System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
-                + String.format("%-20s", "|NOME DO FILME") + "\t"
-                + String.format("%-20s", "|GÊNERO") + "\t"
-                + String.format("%-20s", "|SINOPSE"));
-        for (Filme filme : filmeServico.listarFilmes()) {
-            System.out.println(String.format("%-10s", filme.getIdFilme()) + "\t"
-                    + String.format("%-20s", "|" + filme.getNomeFilme()) + "\t"
-                    + String.format("%-20s", "|" + filme.getGeneroFilme()) + "\t"
-                    + String.format("%-20s", "|" + filme.getSinopseFilme()));
+        if (filmeServico.listarFilmes().isEmpty()) {
+            System.out.println("Nenhum item cadastrado.");
+        } else {
+            System.out.println("-----------------------------\n");
+            System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
+                    + String.format("%-20s", "|NOME DO FILME") + "\t"
+                    + String.format("%-20s", "|GÊNERO") + "\t"
+                    + String.format("%-20s", "|SINOPSE"));
+            for (Filme filme : filmeServico.listarFilmes()) {
+                System.out.println(String.format("%-10s", filme.getIdFilme()) + "\t"
+                        + String.format("%-20s", "|" + filme.getNomeFilme()) + "\t"
+                        + String.format("%-20s", "|" + filme.getGeneroFilme()) + "\t"
+                        + String.format("%-20s", "|" + filme.getSinopseFilme()));
+            }
         }
     }
 

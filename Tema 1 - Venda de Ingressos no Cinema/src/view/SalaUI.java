@@ -12,10 +12,10 @@ import view.menu.SalaMenu;
  */
 public class SalaUI {
 
-    private SalaServico servicoSala;
+    private SalaServico salaServico;
 
     public SalaUI() {
-        servicoSala = new SalaServico();
+        salaServico = new SalaServico();
     }
 
     public void executar() {
@@ -28,7 +28,6 @@ public class SalaUI {
                     cadastrarSala();
                     break;
                 case SalaMenu.OP_REMOVER:
-                    mostrarSalas();
                     removerSala();
                     break;
                 case SalaMenu.OP_LISTAR:
@@ -46,12 +45,12 @@ public class SalaUI {
     private void cadastrarSala() {
         try {
             int codigo = Console.scanInt("Código da Sala: ");
-            if (servicoSala.salaExisteCodSala(codigo)) {
+            if (salaServico.salaExisteCodSala(codigo)) {
                 System.out.println("Código já existente no cadastro");
             } else {
                 int qtdAssentos = Console.scanInt("Quantidade de assentos: ");
                 try {
-                    servicoSala.addSala(new Sala(codigo, qtdAssentos));
+                    salaServico.addSala(new Sala(codigo, qtdAssentos));
                     System.out.println("Sala " + codigo + " cadastrada com sucesso!");
                 } catch (Exception e) {
                     System.out.println("Ocorreu um erro ao salvar!");
@@ -63,12 +62,11 @@ public class SalaUI {
     }
 
     private void removerSala() {
-        mostrarSalas();
         try {
             int codSala = Console.scanInt("\nInforme o código da sala: ");
-            if (servicoSala.salaExisteCodSala(codSala)) {
-                servicoSala.removerSala(servicoSala.procurarPorCodSala(codSala));
-                System.out.println("Sala " + codSala + "removida.");
+            if (salaServico.salaExisteCodSala(codSala)) {
+                salaServico.removerSala(salaServico.procurarPorCodSala(codSala));
+                System.out.println("Sala " + codSala + " removida.");
             } else {
                 System.out.println("Sala não encontrada.");
             }
@@ -78,12 +76,16 @@ public class SalaUI {
     }
 
     public void mostrarSalas() {
-        System.out.println("-----------------------------\n");
-        System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
-                + String.format("%-20s", "|QUANTIDADE DE ASSENTOS"));
-        for (Sala sala : servicoSala.listarSalas()) {
-            System.out.println(String.format("%-10s", sala.getCodSala()) + "\t"
-                    + String.format("%-20s", "|" + sala.getQuantidadeAssentos()));
+        if (salaServico.listarSalas().isEmpty()) {
+            System.out.println("Nenhum item cadastrado.");
+        } else {
+            System.out.println("-----------------------------\n");
+            System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
+                    + String.format("%-20s", "|QUANTIDADE DE ASSENTOS"));
+            for (Sala sala : salaServico.listarSalas()) {
+                System.out.println(String.format("%-10s", sala.getCodSala()) + "\t"
+                        + String.format("%-20s", "|" + sala.getQuantidadeAssentos()));
+            }
         }
     }
 }

@@ -18,6 +18,5 @@ public interface FilmeDao {
     public List<Filme> listar();
 
     public Filme procurarPorIdFilme(int idFilme);
-        //public Filme procurarPorCodFilme(int codFilme);
-    //public Filme procurarPorGeneroFilme(String genFilme);
+
 }

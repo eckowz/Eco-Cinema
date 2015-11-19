@@ -36,14 +36,13 @@ public class SessaoUI {
                     cadastrarSessao();
                     break;
                 case SessaoMenu.OP_REMOVER:
-                    listarHorariosComAssentos();
-                    //sessao.removerSessao();
+                    removerSessao();
                     break;
                 case SessaoMenu.OP_EDITAR:
                     editarHorario();
                     break;
                 case SessaoMenu.OP_LISTAR:
-                    listarHorariosComAssentos();
+                    listarHorarios();
                     break;
                 case SessaoMenu.OP_CONSULTARFILME:
                     consultarHorarios();
@@ -59,83 +58,76 @@ public class SessaoUI {
     }
 
     private void cadastrarSessao() {
-        try{
-        System.out.println("Lista de salas existentes: ");
-        new SalaUI().mostrarSalas();
-        int codigoSala = Console.scanInt("\nInforme o código da sala: ");
-        Sala sala = salaServico.procurarPorCodSala(codigoSala);
+        try {
+            System.out.println("Lista de salas existentes: ");
+            new SalaUI().mostrarSalas();
+            int codigoSala = Console.scanInt("\nInforme o código da sala: ");
+            Sala sala = salaServico.procurarPorCodSala(codigoSala);
 
-        if (sala!=null) {
-            System.out.println("Lista de filmes disponiveis: ");
-            new FilmeUI().mostrarFilmes();
-            int codigoFilme = Console.scanInt("\nInforme o código do filme: ");
-            Filme filme = filmeServico.procurarPorIdFilme(codigoFilme);
+            if (sala != null) {
+                System.out.println("Lista de filmes disponiveis: ");
+                new FilmeUI().mostrarFilmes();
+                int codigoFilme = Console.scanInt("\nInforme o código do filme: ");
+                Filme filme = filmeServico.procurarPorIdFilme(codigoFilme);
 
-            if (filmeServico.filmeExisteId(codigoFilme)) {
-                String dataHora = Console.scanString("Data/Hora (dd/mm/aaaa hh:mm):");
-                Date horario;
-                try {
-                    horario = DateUtil.stringToDateHour(dataHora);
+                if (filmeServico.filmeExisteId(codigoFilme)) {
+                    String dataHora = Console.scanString("Data/Hora (dd/mm/aaaa hh:mm):");
+                    Date horario;
+                    try {
+                        horario = DateUtil.stringToDateHour(dataHora);
 
-                    //if (sessao.sessaoExiste(horario)) {
-                    //    System.out.println("Esse horario já existe para outra sessão.");
-                    //} else {
-                    Sessao sessao = new Sessao(horario, filme, sala, sala.getQuantidadeAssentos());
-                    sessaoServico.adicionarSessao(sessao);
-                    System.out.println("Sessão cadastrada com sucesso!");
-                    //}
-                } catch (Exception e) {
-                    System.out.println("Data ou hora no formato inválido!");
+                        //if (sessao.sessaoExiste(horario)) {
+                        //    System.out.println("Esse horario já existe para outra sessão.");
+                        //} else {
+                        Sessao sessao = new Sessao(horario, filme, sala, sala.getQuantidadeAssentos());
+                        sessaoServico.adicionarSessao(sessao);
+                        System.out.println("Sessão cadastrada com sucesso!");
+                        //}
+                    } catch (Exception e) {
+                        System.out.println("Data ou hora no formato inválido!");
+                    }
+                } else {
+                    System.out.println("Filme não encontrado!");
                 }
-            } else {
-                System.out.println("Filme não encontrado!");
-            }
 
-        } else {
-            System.out.println("Sala não encontrada!");
-        }
-        }catch(InputMismatchException ex){
+            } else {
+                System.out.println("Sala não encontrada!");
+            }
+        } catch (InputMismatchException ex) {
             System.out.println("Código inválido.");
         }
     }
 
     public void listarHorarios() {
-        System.out.println("-----------------------------\n");
-        System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
-                + String.format("%-20s", "|HORÁRIO") + "\t"
-                + String.format("%-20s", "|FILME") + "\t"
-                + String.format("%-5s", "|SALA") + "\t");
-        for (Sessao horarioSessao : sessaoServico.listarSessoes()) {
-            System.out.println(String.format("%-10s", horarioSessao.getIdSessao()) + "\t"
-                    + String.format("%-20s", "|" + DateUtil.dateHourToString(horarioSessao.getHorario())) + "\t"
-                    + String.format("%-20s", "|" + horarioSessao.getFilme().getNomeFilme()) + "\t"
-                    + String.format("%-5s", "|" + horarioSessao.getAssentosDisponiveis())
-            );
-        }
-    }
-
-    public void listarHorariosComAssentos() {
-        System.out.println("-----------------------------\n");
-        System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
-                + String.format("%-20s", "|HORÁRIO") + "\t"
-                + String.format("%-20s", "|FILME") + "\t"
-                + String.format("%-5s", "|SALA") + "\t"
-                + String.format("%-5s", "|ASSENTOS DISP."));
-        for (Sessao horario : sessaoServico.listarSessoes()) {
-            System.out.println(String.format("%-10s", horario.getIdSessao()) + "\t"
-                    + String.format("%-20s", "|" + DateUtil.dateHourToString(horario.getHorario())) + "\t"
-                    + String.format("%-20s", "|" + horario.getFilme().getNomeFilme()) + "\t"
-                    + String.format("%-5s", "|" + horario.getSala().getCodSala()) + "\t"
-                    + String.format("%-5s", "|" + horario.getAssentosDisponiveis())
-            );
+        if (sessaoServico.listarSessoes().isEmpty()) {
+            System.out.println("Nenhum item cadastrado.");
+        } else {
+            System.out.println("-----------------------------\n");
+            System.out.println(String.format("%-10s", "CÓDIGO") + "\t"
+                    + String.format("%-20s", "|HORÁRIO") + "\t"
+                    + String.format("%-20s", "|FILME") + "\t"
+                    + String.format("%-5s", "|SALA") + "\t"
+                    + String.format("%-5s", "|ASSENTOS DISP."));
+            for (Sessao horario : sessaoServico.listarSessoes()) {
+                System.out.println(String.format("%-10s", horario.getIdSessao()) + "\t"
+                        + String.format("%-20s", "|" + DateUtil.dateHourToString(horario.getHorario())) + "\t"
+                        + String.format("%-20s", "|" + horario.getFilme().getNomeFilme()) + "\t"
+                        + String.format("%-5s", "|" + horario.getSala().getCodSala()) + "\t"
+                        + String.format("%-5s", "|" + horario.getAssentosDisponiveis())
+                );
+            }
         }
     }
 
     private void editarHorario() {
-        //Definir o método
+        System.out.println("Não implementado.");
     }
 
     private void consultarHorarios() {
-        //Definir o método
+        System.out.println("Não implementado.");
+    }
+
+    private void removerSessao() {
+        System.out.println("Não implementado.");
     }
 }
