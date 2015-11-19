@@ -17,12 +17,6 @@ public class FilmeServico {
         return (filme != null);
     }
 
-//    public Filme procurarPorCodFilme(int idFilme) {
-//        FilmeDao dao = new FilmeDaoBd();
-//        Filme filme = dao.procurarPorCodFilme(idFilme);
-//        return (filme);
-//    }
-    
     public Filme procurarPorIdFilme(int idFilme) {
         FilmeDao dao = new FilmeDaoBd();
         Filme filme = dao.procurarPorIdFilme(idFilme);
@@ -37,7 +31,7 @@ public class FilmeServico {
         return (new FilmeDaoBd().listar());
     }
 
-    public void deletarFilme(Filme filme) {
+    public void removerFilme(Filme filme) {
         new FilmeDaoBd().deletar(filme);
     }
 }

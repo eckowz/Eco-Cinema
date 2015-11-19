@@ -27,7 +27,7 @@ public class FilmeUI {
                     cadastrarFilme();
                     break;
                 case FilmeMenu.OP_REMOVER:
-                    deletarFilme();
+                    removerFilme();
                     break;
                 case FilmeMenu.OP_LISTAR:
                     mostrarFilmes();
@@ -80,7 +80,22 @@ public class FilmeUI {
         }
     }
 
-    private void deletarFilme() {
-        System.out.println("Nao implementado.");
+    private void removerFilme() {
+        if (filmeServico.listarFilmes().isEmpty()) {
+            System.out.println("Nenhum item cadastrado.");
+        } else {
+            mostrarFilmes();
+            try {
+                int idFilme = Console.scanInt("\nInforme o código do filme: ");
+                if (filmeServico.filmeExisteId(idFilme)) {
+                    filmeServico.removerFilme(filmeServico.procurarPorIdFilme(idFilme));
+                    System.out.println("Filme " + idFilme + " removido.");
+                } else {
+                    System.out.println("Filme não encontrado.");
+                }
+            } catch (Exception e) {
+                System.out.println("Ocorreu um erro.");
+            }
+        }
     }
 }
