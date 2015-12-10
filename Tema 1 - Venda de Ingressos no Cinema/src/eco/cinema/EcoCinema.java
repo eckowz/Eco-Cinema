@@ -5,7 +5,12 @@
  */
 package eco.cinema;
 
-import view.MainUI;
+import controller.FilmeController;
+import view.JanelaCrudFilme;
+import controller.SalaController;
+import view.JanelaCrudSala;
+import controller.SessaoController;
+import view.JanelaCrudSessao;
 
 /**
  *
@@ -17,7 +22,20 @@ public class EcoCinema {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new MainUI().executar();
+        FilmeController FilmeController = new FilmeController();
+        JanelaCrudFilme FilmeJanela = new JanelaCrudFilme(FilmeController);
+        FilmeController.setJanela(FilmeJanela);
+        
+        SalaController SalaController = new SalaController();
+        JanelaCrudSala SalaJanela = new JanelaCrudSala(SalaController);
+        SalaController.setJanela(SalaJanela);
+        
+//        SessaoController SessaoController = new SessaoController();
+//        JanelaCrudSessao SessaoJanela = new JanelaCrudSessao(SessaoController);
+//        SessaoController.setJanela(SessaoJanela);
+        
+        
+        
     }
     
 }

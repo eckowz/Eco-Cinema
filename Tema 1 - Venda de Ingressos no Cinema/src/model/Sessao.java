@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Sessao implements Comparable<Sessao> {
 
@@ -19,6 +20,7 @@ public class Sessao implements Comparable<Sessao> {
     }
 
     public Sessao(Date horario, Filme filme, Sala sala, int assentosDisponiveis) {
+        this.idSessao = -1;
         this.horario = horario;
         this.filme = filme;
         this.sala = sala;
@@ -65,13 +67,44 @@ public class Sessao implements Comparable<Sessao> {
         this.sala = sala;
     }
 
-    /**
-     * public void setAssentosDisponiveis(HorarioSessao o){
-     * this.assentosDisponiveis = o; }
-     */
     @Override
     public int compareTo(Sessao o) {
         return (this.getHorario().compareTo(o.getHorario()));
+    }
+
+    @Override
+    public String toString() {
+        return "Sessao{" + "horario=" + horario + ", filme=" + filme + ", sala=" + sala + ", assentosDisponiveis=" + assentosDisponiveis + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.horario);
+        hash = 53 * hash + Objects.hashCode(this.filme);
+        hash = 53 * hash + Objects.hashCode(this.sala);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sessao other = (Sessao) obj;
+        if (!Objects.equals(this.horario, other.horario)) {
+            return false;
+        }
+        if (!Objects.equals(this.filme, other.filme)) {
+            return false;
+        }
+        if (!Objects.equals(this.sala, other.sala)) {
+            return false;
+        }
+        return true;
     }
 
 }

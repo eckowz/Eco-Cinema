@@ -15,8 +15,10 @@ public interface FilmeDao {
 
     public void atualizar(Filme filme);
 
-    public List<Filme> listar();
-
     public Filme procurarPorIdFilme(int idFilme);
+
+    public List<Filme> buscarPorNome(String nome);
+
+    public List<Filme> listar();
 
 }

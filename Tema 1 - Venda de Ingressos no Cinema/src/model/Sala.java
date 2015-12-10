@@ -16,6 +16,7 @@ public class Sala {
     private int idSala, codSala, quantidadeAssentos;
 
     public Sala(int codigoSala, int quantidadeAssentos) {
+        this.idSala = -1;
         this.codSala = codigoSala;
         this.quantidadeAssentos = quantidadeAssentos;
     }
@@ -74,7 +75,8 @@ public class Sala {
 
     @Override
     public String toString() {
-        return codSala + " - " + quantidadeAssentos;
+        return "Sala{" + "idSala=" + idSala + ", codSala=" + codSala
+                + ", quantidadeAssentos=" + quantidadeAssentos + '}';
     }
 
 }

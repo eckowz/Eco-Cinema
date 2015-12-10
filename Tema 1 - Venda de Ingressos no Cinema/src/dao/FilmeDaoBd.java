@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Filme;
+import view.PrintUtil;
 
 /**
  *
@@ -55,7 +56,7 @@ public class FilmeDaoBd implements FilmeDao {
             comando.setInt(1, filme.getIdFilme());
             comando.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(FilmeDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageError(null, "Ocorreu um erro.");
         } finally {
             fecharConexao();
         }
@@ -70,7 +71,7 @@ public class FilmeDaoBd implements FilmeDao {
             conectar(sql);
             comando.setString(1, filme.getNomeFilme());
             comando.setString(2, filme.getGeneroFilme());
-            comando.setString(3, filme.getSinopseFilme());            
+            comando.setString(3, filme.getSinopseFilme());
             comando.executeUpdate();
 
         } catch (SQLException ex) {
@@ -135,7 +136,12 @@ public class FilmeDaoBd implements FilmeDao {
 
         return (null);
     }
-    
+
+    @Override
+    public List<Filme> buscarPorNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public void conectar(String sql) throws SQLException {
         conexao = ConnectionFactory.getConnection();
         comando = conexao.prepareStatement(sql);
@@ -159,4 +165,5 @@ public class FilmeDaoBd implements FilmeDao {
         }
 
     }
+
 }

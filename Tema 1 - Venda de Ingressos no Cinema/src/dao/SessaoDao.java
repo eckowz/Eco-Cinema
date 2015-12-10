@@ -14,6 +14,8 @@ public interface SessaoDao {
 
     public void deletar(Sessao sessao);
 
+    public void atualizar(Sessao sessao);
+
     public void ocuparAssento(Sessao sessao);
 
     public List<Sessao> listar();

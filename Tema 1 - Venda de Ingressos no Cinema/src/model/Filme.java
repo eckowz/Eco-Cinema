@@ -16,14 +16,15 @@ public class Filme {
     private int idFilme;
     private String nomeFilme, generoFilme, sinopseFilme;
 
-    public Filme(int idFilme, String nomeFilme, String generoFilme, String sinopseFilme) {
-        this.idFilme = idFilme;
+    public Filme(String nomeFilme, String generoFilme, String sinopseFilme) {
+        this.idFilme = -1;
         this.nomeFilme = nomeFilme;
         this.generoFilme = generoFilme;
         this.sinopseFilme = sinopseFilme;
     }
 
-    public Filme(String nomeFilme, String generoFilme, String sinopseFilme) {
+    public Filme(int idFilme, String nomeFilme, String generoFilme, String sinopseFilme) {
+        this.idFilme = idFilme;
         this.nomeFilme = nomeFilme;
         this.generoFilme = generoFilme;
         this.sinopseFilme = sinopseFilme;
@@ -62,6 +63,13 @@ public class Filme {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.nomeFilme);
+        return hash;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -70,22 +78,19 @@ public class Filme {
             return false;
         }
         final Filme other = (Filme) obj;
-        if (!Objects.equals(this.idFilme, other.idFilme)) {
+        if (this.idFilme != other.idFilme) {
+            return false;
+        }
+        if (!Objects.equals(this.nomeFilme, other.nomeFilme)) {
             return false;
         }
         return true;
     }
 
     @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.idFilme);
-        return hash;
-    }
-
-    @Override
     public String toString() {
-        return idFilme + " - " + nomeFilme + ", " + generoFilme;
+        return "Filme{" + " nomeFilme=" + nomeFilme + ", generoFilme="
+                + generoFilme + ", sinopseFilme=" + sinopseFilme + '}';
     }
 
 }

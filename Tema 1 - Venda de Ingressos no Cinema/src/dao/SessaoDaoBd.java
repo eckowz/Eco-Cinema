@@ -200,4 +200,9 @@ public class SessaoDaoBd implements SessaoDao {
 
     }
 
+    @Override
+    public void atualizar(Sessao sessao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
