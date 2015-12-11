@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.cardLayout;
 
-import controller.FilmeController;
+import controller.cardLayout.FilmeController;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;

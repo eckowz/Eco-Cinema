@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.cardLayout;
 
-import controller.SessaoController;
+import controller.cardLayout.FilmeController;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,17 +14,17 @@ import javax.swing.JPanel;
  *
  * @author 631120345
  */
-public class JanelaCrudSessao extends JFrame {
+public class JanelaCrudFilme extends JFrame {
 
-    private SessaoController controller;
+    private FilmeController controller;
 
-    public final static String PAINELFORM = "Formulario Sessao";
-    public final static String PAINELTABELA = "Lista Sessao";
+    public final static String PAINELFORM = "Formulario Filme";
+    public final static String PAINELTABELA = "Lista Filme";
     private JPanel painelPrincipal;
-    private PainelFormularioSessao painelFormulario;
-    private PainelTabelaSessao painelTabela;
+    private PainelFormularioFilme painelFormulario;
+    private PainelTabelaFilme painelTabela;
 
-    public JanelaCrudSessao(SessaoController controller) {
+    public JanelaCrudFilme(FilmeController controller) {
         this.controller = controller;
         this.controller.setJanela(this);
         iniciaComponentes();
@@ -37,9 +37,9 @@ public class JanelaCrudSessao extends JFrame {
 
     private void iniciaComponentes() {
         painelPrincipal = new JPanel(new CardLayout());
-        painelTabela = new PainelTabelaSessao(controller);
+        painelTabela = new PainelTabelaFilme(controller);
         painelPrincipal.add(painelTabela, PAINELTABELA);
-        painelFormulario = new PainelFormularioSessao(controller);
+        painelFormulario = new PainelFormularioFilme(controller);
         painelPrincipal.add(painelFormulario, PAINELFORM);
 
         this.add(painelPrincipal);
@@ -70,21 +70,21 @@ public class JanelaCrudSessao extends JFrame {
 //
 //    }
 
-    public void mostrarPainelSessao(String painel) {
+    public void mostrarPainelFilme(String painel) {
         CardLayout card = (CardLayout) (painelPrincipal.getLayout());
         card.show(painelPrincipal, painel);
 
     }
 
-    public PainelFormularioSessao getPainelFormulario() {
+    public PainelFormularioFilme getPainelFormulario() {
         return painelFormulario;
     }
 
-    public PainelTabelaSessao getPainelTabela() {
+    public PainelTabelaFilme getPainelTabela() {
         return painelTabela;
     }
 
-    public void setController(SessaoController controller) {
+    public void setController(FilmeController controller) {
         this.controller = controller;
     }
 

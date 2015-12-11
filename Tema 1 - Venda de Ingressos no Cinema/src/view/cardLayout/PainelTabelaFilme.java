@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.cardLayout;
 
-import controller.SalaController;
+import controller.cardLayout.FilmeController;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
@@ -13,14 +13,14 @@ import javax.swing.JTable;
  *
  * @author gserafini
  */
-public class PainelTabelaSala extends javax.swing.JPanel {
+public class PainelTabelaFilme extends javax.swing.JPanel {
 
-    private SalaController controller;
+    private FilmeController controller;
 
     /**
-     * Creates new form PainelTabelaSala
+     * Creates new form PainelTabelaFilme
      */
-    public PainelTabelaSala(SalaController controller) {
+    public PainelTabelaFilme(FilmeController controller) {
         this.controller = controller;
         initComponents();
     }
@@ -35,7 +35,7 @@ public class PainelTabelaSala extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaSalas = new javax.swing.JTable();
+        tabelaFilmes = new javax.swing.JTable();
         botaoInserir = new javax.swing.JButton();
         botaoEditar = new javax.swing.JButton();
         botaoRemover = new javax.swing.JButton();
@@ -44,8 +44,8 @@ public class PainelTabelaSala extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(400, 300));
         setMinimumSize(new java.awt.Dimension(400, 300));
 
-        tabelaSalas.setModel(new SalaTableModel());
-        jScrollPane1.setViewportView(tabelaSalas);
+        tabelaFilmes.setModel(new FilmeTableModel());
+        jScrollPane1.setViewportView(tabelaFilmes);
 
         botaoInserir.setText("Inserir");
         botaoInserir.addActionListener(new java.awt.event.ActionListener() {
@@ -109,19 +109,19 @@ public class PainelTabelaSala extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInserirActionPerformed
-        controller.inserirSala();
+        controller.inserirFilme();
     }//GEN-LAST:event_botaoInserirActionPerformed
 
     private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed
-        controller.editarSala();
+        controller.editarFilme();
     }//GEN-LAST:event_botaoEditarActionPerformed
 
     private void botaoRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRemoverActionPerformed
-        controller.removerSala();
+        controller.removerFilme();
     }//GEN-LAST:event_botaoRemoverActionPerformed
 
     private void botaoVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVisualizarActionPerformed
-        controller.visualizarSala();
+        controller.visualizarFilme();
     }//GEN-LAST:event_botaoVisualizarActionPerformed
 
     public JButton getBotaoEditar() {
@@ -140,8 +140,8 @@ public class PainelTabelaSala extends javax.swing.JPanel {
         return botaoVisualizar;
     }
 
-    public JTable getTabelaSalas() {
-        return tabelaSalas;
+    public JTable getTabelaFilmes() {
+        return tabelaFilmes;
     }
 
 
@@ -151,6 +151,6 @@ public class PainelTabelaSala extends javax.swing.JPanel {
     private javax.swing.JButton botaoRemover;
     private javax.swing.JButton botaoVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaSalas;
+    private javax.swing.JTable tabelaFilmes;
     // End of variables declaration//GEN-END:variables
 }

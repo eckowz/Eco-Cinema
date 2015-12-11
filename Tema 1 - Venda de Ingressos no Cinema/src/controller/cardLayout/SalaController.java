@@ -1,9 +1,9 @@
-package controller;
+package controller.cardLayout;
 
-import view.JanelaCrudSala;
-import view.PainelFormularioSala;
-import view.SalaTableModel;
-import view.PainelTabelaSala;
+import view.cardLayout.JanelaCrudSala;
+import view.cardLayout.PainelFormularioSala;
+import view.cardLayout.SalaTableModel;
+import view.cardLayout.PainelTabelaSala;
 import view.PrintUtil;
 import dao.SalaDao;
 import dao.SalaDaoBd;

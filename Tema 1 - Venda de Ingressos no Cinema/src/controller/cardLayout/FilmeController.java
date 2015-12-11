@@ -1,9 +1,9 @@
-package controller;
+package controller.cardLayout;
 
-import view.JanelaCrudFilme;
-import view.PainelFormularioFilme;
-import view.FilmeTableModel;
-import view.PainelTabelaFilme;
+import view.cardLayout.JanelaCrudFilme;
+import view.cardLayout.PainelFormularioFilme;
+import view.cardLayout.FilmeTableModel;
+import view.cardLayout.PainelTabelaFilme;
 import view.PrintUtil;
 import dao.FilmeDao;
 import dao.FilmeDaoBd;

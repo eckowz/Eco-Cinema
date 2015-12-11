@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.cardLayout;
 
-import controller.SessaoController;
+import controller.cardLayout.SessaoController;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
