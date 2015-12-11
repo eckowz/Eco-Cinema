@@ -5,12 +5,6 @@
  */
 package eco.cinema;
 
-import controller.cardLayout.FilmeController;
-import view.cardLayout.JanelaCrudFilme;
-import controller.cardLayout.SalaController;
-import view.cardLayout.JanelaCrudSala;
-import controller.cardLayout.SessaoController;
-import view.cardLayout.JanelaCrudSessao;
 import view.MainView;
 
 /**
