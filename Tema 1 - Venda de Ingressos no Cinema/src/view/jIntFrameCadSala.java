@@ -162,7 +162,7 @@ public class jIntFrameCadSala extends javax.swing.JInternalFrame {
 
             PrintUtil.printMessageSucesso(null, title);
         } catch (Exception e) {
-            PrintUtil.printMessageErro(null, title, e);
+            PrintUtil.printMessageErro(null, e);
         }
     }
 

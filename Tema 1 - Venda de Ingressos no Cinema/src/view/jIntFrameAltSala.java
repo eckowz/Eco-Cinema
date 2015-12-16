@@ -309,7 +309,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
             salaServico.atualizarSala(sala);
 
         } catch (NumberFormatException | HeadlessException e) {
-            PrintUtil.printMessageErro(null, title, e);
+            PrintUtil.printMessageErro(null, e);
         }
         carregarDados();
     }

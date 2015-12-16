@@ -319,7 +319,7 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
             jTextGeneroFilme.setText((String) jTable1.getValueAt(linhaSelecionada, 2));
             jTextAreaFilme.setText((String) jTable1.getValueAt(linhaSelecionada, 3));
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione uma linha!");
+            PrintUtil.printMessageErro(null, "Selecione uma linha!", null);
         }
     }
 
@@ -334,7 +334,7 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
             filmeServico.atualizarFilme(filme);
 
         } catch (NumberFormatException | HeadlessException e) {
-            PrintUtil.printMessageErro(null, title, e);
+            PrintUtil.printMessageErro(null, e);
         }
         carregarDados();
     }
