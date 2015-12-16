@@ -81,7 +81,7 @@ public class SalaDaoBd implements SalaDao {
             comando.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -107,7 +107,7 @@ public class SalaDaoBd implements SalaDao {
                 listaSalas.add(sala);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -133,7 +133,7 @@ public class SalaDaoBd implements SalaDao {
                 return sala;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -160,7 +160,7 @@ public class SalaDaoBd implements SalaDao {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -185,7 +185,7 @@ public class SalaDaoBd implements SalaDao {
                 return sala;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -212,7 +212,7 @@ public class SalaDaoBd implements SalaDao {
                 conexao.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         }
 
     }
