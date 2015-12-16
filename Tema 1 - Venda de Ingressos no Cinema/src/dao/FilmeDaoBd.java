@@ -39,7 +39,7 @@ public class FilmeDaoBd implements FilmeDao {
                 filme.setIdFilme(cod);
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -54,7 +54,7 @@ public class FilmeDaoBd implements FilmeDao {
             comando.setInt(1, filme.getIdFilme());
             comando.executeUpdate();
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -74,7 +74,7 @@ public class FilmeDaoBd implements FilmeDao {
             comando.executeUpdate();
 
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -84,7 +84,7 @@ public class FilmeDaoBd implements FilmeDao {
     public List<Filme> listar() {
         List<Filme> listaFilmes = new ArrayList<>();
 
-        String sql = "SELECT * FROM filme";
+        String sql = "SELECT * FROM filme ORDER BY idFilme";
 
         try {
             conectar(sql);
@@ -101,7 +101,7 @@ public class FilmeDaoBd implements FilmeDao {
                 listaFilmes.add(filme);
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -128,7 +128,7 @@ public class FilmeDaoBd implements FilmeDao {
                 return filme;
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -160,7 +160,7 @@ public class FilmeDaoBd implements FilmeDao {
                 conexao.close();
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         }
 
     }

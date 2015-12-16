@@ -45,7 +45,7 @@ public class SalaDaoBd implements SalaDao {
                 sala.setIdSala(idSala);
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -60,7 +60,7 @@ public class SalaDaoBd implements SalaDao {
             comando.setInt(1, sala.getIdSala());
             comando.executeUpdate();
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -79,7 +79,7 @@ public class SalaDaoBd implements SalaDao {
             comando.executeUpdate();
 
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -89,7 +89,7 @@ public class SalaDaoBd implements SalaDao {
     public List<Sala> listar() {
         List<Sala> listaSalas = new ArrayList<>();
 
-        String sql = "SELECT * FROM sala";
+        String sql = "SELECT * FROM sala ORDER BY idsala";
 
         try {
             conectar(sql);
@@ -105,7 +105,7 @@ public class SalaDaoBd implements SalaDao {
                 listaSalas.add(sala);
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -131,7 +131,7 @@ public class SalaDaoBd implements SalaDao {
                 return sala;
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -158,7 +158,7 @@ public class SalaDaoBd implements SalaDao {
 
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -183,7 +183,7 @@ public class SalaDaoBd implements SalaDao {
                 return sala;
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         } finally {
             fecharConexao();
         }
@@ -210,7 +210,7 @@ public class SalaDaoBd implements SalaDao {
                 conexao.close();
             }
         } catch (SQLException ex) {
-            PrintUtil.printMessageErro(null, null, ex);
+            PrintUtil.printMessageErro(null, ex);
         }
 
     }
