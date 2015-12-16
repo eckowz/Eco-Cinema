@@ -15,15 +15,28 @@ import javax.swing.JOptionPane;
 public class PrintUtil {
 
     /**
-     * Mensagem de retorno com tratamento de Exception.
+     * Mensagem não personalizavel de retorno com tratamento de Exception.
      *
-     * @param janela - necessário para o método, pode ser null
-     * @param msg - mensagem a ser exibita(não utilizado)
-     * @param e - o excepetion que será exibido
+     * @param janela necessário para o método, pode ser null
+     * @param e o excepetion que será exibido
+     */
+    public static void printMessageErro(JFrame janela, Exception e) {
+        JOptionPane.showMessageDialog(janela,
+                "Ocorreu um erro " + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    /**
+     * Mensagem personalizavel de retorno com tratamento de Exception.
+     *
+     * @param janela necessário para o método, pode ser null
+     * @param msg
+     * @param e o excepetion que será exibido
      */
     public static void printMessageErro(JFrame janela, String msg, Exception e) {
         JOptionPane.showMessageDialog(janela,
-                "Ocorreu um erro " + e.getMessage(),
+                msg + "/n " + e.getMessage(),
                 "Erro",
                 JOptionPane.ERROR_MESSAGE);
     }
