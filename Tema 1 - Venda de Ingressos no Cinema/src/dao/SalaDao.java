@@ -13,11 +13,18 @@ import model.Sala;
  * @author 631120345
  */
 public interface SalaDao {
+
     public void inserir(Sala sala);
+
     public void deletar(Sala sala);
+
     public void atualizar(Sala sala);
+
     public List<Sala> listar();
+
     public Sala procurarPorId(int idSala);
+
     public Sala procurarPorCodSala(int codSala);
+
     public Sala procurarPorQuantidadeAssentos(int qtdAssentos);
 }
