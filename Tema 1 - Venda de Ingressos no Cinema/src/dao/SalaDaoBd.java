@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Sala;
+import view.PrintUtil;
 
 /**
  *
@@ -46,7 +47,7 @@ public class SalaDaoBd implements SalaDao {
                 sala.setIdSala(idSala);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -61,7 +62,7 @@ public class SalaDaoBd implements SalaDao {
             comando.setInt(1, sala.getIdSala());
             comando.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }

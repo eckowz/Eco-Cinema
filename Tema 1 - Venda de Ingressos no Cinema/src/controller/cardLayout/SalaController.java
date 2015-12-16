@@ -54,7 +54,7 @@ public class SalaController {
 
         linhaSelecionada = painelTabela.getTabelaSalas().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Sala sal = tableModel.getSala(linhaSelecionada);
@@ -76,7 +76,7 @@ public class SalaController {
 
         linhaSelecionada = painelTabela.getTabelaSalas().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Sala sal = tableModel.getSala(linhaSelecionada);
@@ -96,7 +96,7 @@ public class SalaController {
         SalaTableModel tableModel = (SalaTableModel) painelTabela.getTabelaSalas().getModel();
         linhaSelecionada = painelTabela.getTabelaSalas().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Sala sal = tableModel.getSala(linhaSelecionada);

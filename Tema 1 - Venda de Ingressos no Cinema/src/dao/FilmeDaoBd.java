@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Filme;
 import view.PrintUtil;
 
@@ -41,7 +39,7 @@ public class FilmeDaoBd implements FilmeDao {
                 filme.setIdFilme(cod);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FilmeDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -56,7 +54,7 @@ public class FilmeDaoBd implements FilmeDao {
             comando.setInt(1, filme.getIdFilme());
             comando.executeUpdate();
         } catch (SQLException ex) {
-            PrintUtil.printMessageError(null, "Ocorreu um erro.");
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -75,7 +73,7 @@ public class FilmeDaoBd implements FilmeDao {
             comando.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(FilmeDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -102,7 +100,7 @@ public class FilmeDaoBd implements FilmeDao {
                 listaFilmes.add(filme);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FilmeDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -129,7 +127,7 @@ public class FilmeDaoBd implements FilmeDao {
                 return filme;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         } finally {
             fecharConexao();
         }
@@ -161,7 +159,7 @@ public class FilmeDaoBd implements FilmeDao {
                 conexao.close();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(SalaDaoBd.class.getName()).log(Level.SEVERE, null, ex);
+            PrintUtil.printMessageErro(null, null, ex);
         }
 
     }

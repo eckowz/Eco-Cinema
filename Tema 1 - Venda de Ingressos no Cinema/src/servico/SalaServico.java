@@ -40,4 +40,8 @@ public class SalaServico {
     public void removerSala(Sala sala) {
         new SalaDaoBd().deletar(sala);
     }
+    
+    public void atualizarSala(Sala sala) {
+        new SalaDaoBd().atualizar(sala);
+    }
 }

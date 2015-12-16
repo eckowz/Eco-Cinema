@@ -54,7 +54,7 @@ public class FilmeController {
 
         linhaSelecionada = painelTabela.getTabelaFilmes().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Filme film = tableModel.getFilme(linhaSelecionada);
@@ -76,7 +76,7 @@ public class FilmeController {
 
         linhaSelecionada = painelTabela.getTabelaFilmes().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Filme film = tableModel.getFilme(linhaSelecionada);
@@ -96,7 +96,7 @@ public class FilmeController {
         FilmeTableModel tableModel = (FilmeTableModel) painelTabela.getTabelaFilmes().getModel();
         linhaSelecionada = painelTabela.getTabelaFilmes().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Filme film = tableModel.getFilme(linhaSelecionada);

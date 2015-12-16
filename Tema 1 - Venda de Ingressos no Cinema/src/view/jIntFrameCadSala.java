@@ -5,25 +5,23 @@
  */
 package view;
 
-import controller.SalaController;
-import java.awt.event.KeyEvent;
+import model.Sala;
 import servico.SalaServico;
 
 /**
  *
- * @author gserafini
+ * @author Eckowz
  */
 public class jIntFrameCadSala extends javax.swing.JInternalFrame {
 
     SalaServico salaServico = new SalaServico();
-    SalaController salaController = new SalaController();
 
     /**
      * Creates new form jIntFrameCadSala
      */
     public jIntFrameCadSala() {
         initComponents();
-        this.isMaximum=true;
+
     }
 
     /**
@@ -35,22 +33,33 @@ public class jIntFrameCadSala extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jTextNumeroSala = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonLimparCadastro = new javax.swing.JButton();
+        jButtonCadastrarSala = new javax.swing.JButton();
         jTextQuantidadeDeAssentos = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButtonCadastrarSala = new javax.swing.JButton();
-        jButtonLimparCadastro = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextCodigoSala = new javax.swing.JTextField();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Cadastrar Salas");
         setToolTipText("");
-        setMaximumSize(new java.awt.Dimension(500, 400));
-        setMinimumSize(new java.awt.Dimension(500, 400));
+        setMaximumSize(new java.awt.Dimension(575, 537));
+        setMinimumSize(new java.awt.Dimension(575, 537));
         setName(""); // NOI18N
+        setOpaque(true);
 
-        jLabel2.setText("Número da Sala");
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel3.setText("Quantidade de Assentos");
+        jButtonLimparCadastro.setText("Limpar");
+        jButtonLimparCadastro.setPreferredSize(new java.awt.Dimension(81, 23));
+        jButtonLimparCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparCadastroActionPerformed(evt);
+            }
+        });
 
         jButtonCadastrarSala.setText("Cadastrar");
         jButtonCadastrarSala.addActionListener(new java.awt.event.ActionListener() {
@@ -64,15 +73,51 @@ public class jIntFrameCadSala extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonLimparCadastro.setText("Limpar");
-        jButtonLimparCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparCadastroActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("Quantidade de Assentos:");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Cadastro das Salas");
+        jLabel2.setText("Código da Sala:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonCadastrarSala, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLimparCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextQuantidadeDeAssentos))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextCodigoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(39, 39, 39))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextCodigoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextQuantidadeDeAssentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonLimparCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCadastrarSala, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,72 +125,58 @@ public class jIntFrameCadSala extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCadastrarSala)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonLimparCadastro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextQuantidadeDeAssentos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextNumeroSala)))
-                .addGap(50, 50, 50))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(121, 121, 121))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextNumeroSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextQuantidadeDeAssentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrarSala)
-                    .addComponent(jButtonLimparCadastro))
-                .addGap(28, 28, 28))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(274, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 410, 308);
+        setBounds(0, 0, 575, 537);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Limpa todos os campos do formulario.
+     */
     public void limpar() {
-        jTextNumeroSala.setText("");
+        jTextCodigoSala.setText("");
         jTextQuantidadeDeAssentos.setText("");
     }
+
+    /**
+     * Realiza a leitura dos campos do formulario e os adiciona ao banco através
+     * dos serviços.
+     */
+    public void cadSala() {
+        try {
+            Sala sala = new Sala();
+
+            sala.setCodSala(Integer.parseInt(jTextCodigoSala.getText()));
+            sala.setQuantidadeAssentos(Integer.parseInt(jTextQuantidadeDeAssentos.getText()));
+
+            salaServico.addSala(sala);
+
+            PrintUtil.printMessageSucesso(null, title);
+        } catch (Exception e) {
+            PrintUtil.printMessageErro(null, title, e);
+        }
+    }
+
     private void jButtonCadastrarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarSalaActionPerformed
-        // TODO add your handling code here:
-        salaController.salvarSala(
-                Integer.parseInt(jTextNumeroSala.getText()),
-                Integer.parseInt(jTextQuantidadeDeAssentos.getText()));
+        cadSala();
         limpar();
     }//GEN-LAST:event_jButtonCadastrarSalaActionPerformed
 
     private void jButtonCadastrarSalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCadastrarSalaKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            salaController.salvarSala(
-                    Integer.parseInt(jTextNumeroSala.getText()),
-                    Integer.parseInt(jTextQuantidadeDeAssentos.getText()));
-            limpar();
-        }
+        cadSala();
+        limpar();
     }//GEN-LAST:event_jButtonCadastrarSalaKeyPressed
 
     private void jButtonLimparCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCadastroActionPerformed
-        // TODO add your handling code here:
         limpar();
     }//GEN-LAST:event_jButtonLimparCadastroActionPerformed
 
@@ -153,10 +184,10 @@ public class jIntFrameCadSala extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrarSala;
     private javax.swing.JButton jButtonLimparCadastro;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextNumeroSala;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextCodigoSala;
     private javax.swing.JTextField jTextQuantidadeDeAssentos;
     // End of variables declaration//GEN-END:variables
 }

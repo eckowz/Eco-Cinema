@@ -27,6 +27,9 @@ public class Sala {
         this.quantidadeAssentos = quantidadeAssentos;
     }
 
+    public Sala() {
+    }
+
     public int getIdSala() {
         return idSala;
     }

@@ -58,7 +58,7 @@ public class SessaoController {
 
         linhaSelecionada = painelTabela.getTabelaSessoes().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Sessao ses = tableModel.getSessao(linhaSelecionada);
@@ -82,7 +82,7 @@ public class SessaoController {
 
         linhaSelecionada = painelTabela.getTabelaSessoes().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Sessao ses = tableModel.getSessao(linhaSelecionada);
@@ -103,7 +103,7 @@ public class SessaoController {
         SessaoTableModel tableModel = (SessaoTableModel) painelTabela.getTabelaSessoes().getModel();
         linhaSelecionada = painelTabela.getTabelaSessoes().getSelectedRow();
         if (linhaSelecionada < 0) {
-            PrintUtil.printMessageError(janela, "Não há nenhum elemento selecionado na tabela");
+            PrintUtil.printMessageErro(janela, "Não há nenhum elemento selecionado na tabela", null);
             return;
         }
         Sessao ses = tableModel.getSessao(linhaSelecionada);

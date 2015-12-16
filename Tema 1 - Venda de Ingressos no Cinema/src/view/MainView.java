@@ -5,17 +5,23 @@
  */
 package view;
 
+import java.beans.PropertyVetoException;
+
 /**
  *
  * @author 631120345
  */
 public class MainView extends javax.swing.JFrame {
 
+    jIntFrameCadSala cadSala = new jIntFrameCadSala();
+    jIntFrameAltSala altSala = new jIntFrameAltSala();
+
     /**
      * Creates new form MainView
      */
     public MainView() {
         initComponents();
+
     }
 
     /**
@@ -31,9 +37,15 @@ public class MainView extends javax.swing.JFrame {
         jDeskPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -50,6 +62,9 @@ public class MainView extends javax.swing.JFrame {
         setTitle("Eco-Cinema");
         setResizable(false);
 
+        jDeskPane.setMaximumSize(new java.awt.Dimension(575, 537));
+        jDeskPane.setMinimumSize(new java.awt.Dimension(575, 537));
+
         javax.swing.GroupLayout jDeskPaneLayout = new javax.swing.GroupLayout(jDeskPane);
         jDeskPane.setLayout(jDeskPaneLayout);
         jDeskPaneLayout.setHorizontalGroup(
@@ -63,19 +78,45 @@ public class MainView extends javax.swing.JFrame {
 
         jMenu1.setText("Cadastros");
 
-        jMenuItem1.setText("Sala");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenu7.setText("Sala");
+
+        jMenuItem9.setText("Cadastrar");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem9ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu7.add(jMenuItem9);
 
-        jMenuItem2.setText("Filme");
-        jMenu1.add(jMenuItem2);
+        jMenuItem10.setText("Alterar");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem10);
 
-        jMenuItem3.setText("Sessão");
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jMenu7);
+
+        jMenu8.setText("Filme");
+
+        jMenuItem11.setText("Cadastrar");
+        jMenu8.add(jMenuItem11);
+
+        jMenuItem12.setText("Alterar");
+        jMenu8.add(jMenuItem12);
+
+        jMenu1.add(jMenu8);
+
+        jMenu9.setText("Sessão");
+
+        jMenuItem13.setText("Cadastrar");
+        jMenu9.add(jMenuItem13);
+
+        jMenuItem14.setText("Alterar");
+        jMenu9.add(jMenuItem14);
+
+        jMenu1.add(jMenu9);
 
         jMenuBar1.add(jMenu1);
 
@@ -117,59 +158,52 @@ public class MainView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDeskPane)
+            .addComponent(jDeskPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDeskPane)
+            .addComponent(jDeskPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void telaCadSala(){
-        jIntFrameCadSala cadSala = new jIntFrameCadSala();
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        telaCadSala();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        telaAltSala();
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void telaCadSala() {
+        if (cadSala.isShowing()) {
+            cadSala.dispose();
+            jDeskPane.remove(cadSala);
+        }
         jDeskPane.add(cadSala);
         cadSala.setVisible(true);
-    }
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        telaCadSala();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     * @deprecated Não utilizado, inicializado via eco.cinema.EcoCinema;
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            cadSala.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            PrintUtil.printMessageErro(this, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainView().setVisible(true);
-            }
-        });
+    }
+
+    private void telaAltSala() {
+        if (altSala.isShowing()) {
+            altSala.dispose();
+            jDeskPane.remove(altSala);
+        }
+        jDeskPane.add(altSala);
+        altSala.setVisible(true);
+        try {
+            altSala.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            PrintUtil.printMessageErro(this, null, ex);
+        }
     }
 
     public void exec() {
@@ -180,16 +214,11 @@ public class MainView extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         new MainView().setVisible(true);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -200,14 +229,20 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
