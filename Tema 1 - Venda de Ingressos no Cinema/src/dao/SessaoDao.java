@@ -16,7 +16,7 @@ public interface SessaoDao {
 
     public void atualizar(Sessao sessao);
 
-    public void ocuparAssento(Sessao sessao);
+    public void ocuparAssento(Sessao sessao, int qtd);
 
     public List<Sessao> listar();
 

@@ -135,13 +135,13 @@ public class SessaoDaoBd implements SessaoDao {
     }
 
     @Override
-    public void ocuparAssento(Sessao sessao) {
+    public void ocuparAssento(Sessao sessao, int qtd) {
         try {
             String sql = "UPDATE sessao SET assentosdisponiveis=?"
                     + "WHERE idsessao=?";
 
             conectar(sql);
-            comando.setInt(1, sessao.getAssentosDisponiveis() - 1);
+            comando.setInt(1, sessao.getAssentosDisponiveis() - qtd);
             comando.setInt(2, sessao.getIdSessao());
             comando.executeUpdate();
 
