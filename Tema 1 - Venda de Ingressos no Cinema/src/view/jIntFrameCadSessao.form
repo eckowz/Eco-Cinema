@@ -91,7 +91,7 @@
                               <Component id="jCombSala" min="-2" pref="198" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="jButtonCadastrarSala" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                      <Component id="jButtonCadastrarSessao" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -126,19 +126,19 @@
                       <Component id="jDateChooser" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jButtonCadastrarSala" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jButtonCadastrarSessao" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace pref="85" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButtonCadastrarSala">
+        <Component class="javax.swing.JButton" name="jButtonCadastrarSessao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastrarSalaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastrarSessaoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -231,6 +231,9 @@
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jDateChooser.setDate(new Date());"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
