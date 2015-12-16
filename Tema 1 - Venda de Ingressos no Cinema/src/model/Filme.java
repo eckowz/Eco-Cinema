@@ -30,6 +30,9 @@ public class Filme {
         this.sinopseFilme = sinopseFilme;
     }
 
+    public Filme() {
+    }
+
     public void setIdFilme(int idFilme) {
         this.idFilme = idFilme;
     }

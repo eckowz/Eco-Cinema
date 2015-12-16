@@ -70,6 +70,7 @@ public class FilmeDaoBd implements FilmeDao {
             comando.setString(1, filme.getNomeFilme());
             comando.setString(2, filme.getGeneroFilme());
             comando.setString(3, filme.getSinopseFilme());
+            comando.setInt(4, filme.getIdFilme());
             comando.executeUpdate();
 
         } catch (SQLException ex) {
