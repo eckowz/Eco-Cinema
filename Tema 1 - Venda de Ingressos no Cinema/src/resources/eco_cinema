@@ -8,7 +8,7 @@ create table filme(
 idFilme serial primary key,
 nomeFilme varchar(30),
 generoFilme varchar(30),
-sinopseFilme varchar(30));
+sinopseFilme varchar(100));
 
 create table sessao(
 idsessao serial primary key,
