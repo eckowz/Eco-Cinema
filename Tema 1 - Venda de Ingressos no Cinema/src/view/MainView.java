@@ -6,15 +6,17 @@
 package view;
 
 import java.beans.PropertyVetoException;
+import javax.swing.JInternalFrame;
 
 /**
- *
  * @author 631120345
  */
 public class MainView extends javax.swing.JFrame {
 
     jIntFrameCadSala cadSala = new jIntFrameCadSala();
     jIntFrameAltSala altSala = new jIntFrameAltSala();
+    jIntFrameCadFilme cadFilme = new jIntFrameCadFilme();
+    jIntFrameAltFilme altFilme = new jIntFrameAltFilme();
 
     /**
      * Creates new form MainView
@@ -101,9 +103,19 @@ public class MainView extends javax.swing.JFrame {
         jMenu8.setText("Filme");
 
         jMenuItem11.setText("Cadastrar");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem11);
 
         jMenuItem12.setText("Alterar");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem12);
 
         jMenu1.add(jMenu8);
@@ -170,13 +182,43 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        telaCadSala();
+        carregaTelas(cadSala);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        telaAltSala();
+        carregaTelas(altSala);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        carregaTelas(cadFilme);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        carregaTelas(altFilme);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    /**
+     * Realiza o carregamento de forma adequada das telas.
+     * @param tela - Componente que será carretado
+     */
+    private void carregaTelas(JInternalFrame tela) {
+        if (tela.isShowing()) {
+            tela.dispose();
+            jDeskPane.remove(tela);
+        }
+        jDeskPane.add(tela);
+        tela.setVisible(true);
+        try {
+            tela.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            PrintUtil.printMessageErro(this, null, ex);
+        }
+    }
+
+    /**
+     * @deprecated - generalizado.
+     * @see - Method carregaTelas
+     */
     private void telaCadSala() {
         if (cadSala.isShowing()) {
             cadSala.dispose();
@@ -189,9 +231,12 @@ public class MainView extends javax.swing.JFrame {
         } catch (PropertyVetoException ex) {
             PrintUtil.printMessageErro(this, null, ex);
         }
-
     }
 
+    /**
+     * @deprecated - generalizado.
+     * @see - Method carregaTelas
+     */
     private void telaAltSala() {
         if (altSala.isShowing()) {
             altSala.dispose();
@@ -201,6 +246,42 @@ public class MainView extends javax.swing.JFrame {
         altSala.setVisible(true);
         try {
             altSala.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            PrintUtil.printMessageErro(this, null, ex);
+        }
+    }
+
+    /**
+     * @deprecated - generalizado.
+     * @see - Method carregaTelas
+     */
+    private void telaCadFilme() {
+        if (cadFilme.isShowing()) {
+            cadFilme.dispose();
+            jDeskPane.remove(cadFilme);
+        }
+        jDeskPane.add(cadFilme);
+        cadFilme.setVisible(true);
+        try {
+            cadFilme.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            PrintUtil.printMessageErro(this, null, ex);
+        }
+    }
+
+    /**
+     * @deprecated - generalizado.
+     * @see - Method carregaTelas
+     */
+    private void telaAltFilme() {
+        if (cadFilme.isShowing()) {
+            cadFilme.dispose();
+            jDeskPane.remove(cadFilme);
+        }
+        jDeskPane.add(cadFilme);
+        cadFilme.setVisible(true);
+        try {
+            cadFilme.setMaximum(true);
         } catch (PropertyVetoException ex) {
             PrintUtil.printMessageErro(this, null, ex);
         }
@@ -220,6 +301,7 @@ public class MainView extends javax.swing.JFrame {
         new MainView().setVisible(true);
 
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDeskPane;
@@ -245,4 +327,5 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
+
 }
