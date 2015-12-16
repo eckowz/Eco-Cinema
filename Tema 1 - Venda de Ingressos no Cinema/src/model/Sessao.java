@@ -27,6 +27,9 @@ public class Sessao implements Comparable<Sessao> {
         this.assentosDisponiveis = assentosDisponiveis;
     }
 
+    public Sessao() {
+    }
+
     public void setIdSessao(int idSessao) {
         this.idSessao = idSessao;
     }

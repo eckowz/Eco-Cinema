@@ -38,7 +38,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
     public jIntFrameAltSala() {
         initComponents();
         salaServico = new SalaServico();
-        preencherTabela();
+        carregarDados();
     }
 
     /**
@@ -243,7 +243,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
      * Carrega os registros do banco para uma lista e preenche a tabela com
      * esses registros.
      */
-    private void preencherTabela() {
+    private void carregarDados() {
         tabela.setNumRows(0);
         List<Sala> lista;
         lista = salaServico.listarSalas();
@@ -284,7 +284,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
             PrintUtil.printMessageSucesso(null, title);
         } else {
             PrintUtil.printMessageCancelar(null, title);
-            preencherTabela();
+            carregarDados();
         }
     }
 
@@ -311,13 +311,13 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
         } catch (NumberFormatException | HeadlessException e) {
             PrintUtil.printMessageErro(null, title, e);
         }
-        preencherTabela();
+        carregarDados();
     }
 
 
     private void jButtonDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeletarActionPerformed
         removerRegistro();
-        preencherTabela();
+        carregarDados();
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
@@ -327,12 +327,12 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         limparCampos();
-        preencherTabela();
+        carregarDados();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonConfirmarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarEdicaoActionPerformed
         confirmarEdicao();
-        preencherTabela();
+        carregarDados();
         limparCampos();
     }//GEN-LAST:event_jButtonConfirmarEdicaoActionPerformed
 
@@ -342,7 +342,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        preencherTabela();
+        carregarDados();
     }//GEN-LAST:event_formComponentShown
 
 

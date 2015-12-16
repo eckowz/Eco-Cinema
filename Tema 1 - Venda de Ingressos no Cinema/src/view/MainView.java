@@ -17,6 +17,7 @@ public class MainView extends javax.swing.JFrame {
     jIntFrameAltSala altSala = new jIntFrameAltSala();
     jIntFrameCadFilme cadFilme = new jIntFrameCadFilme();
     jIntFrameAltFilme altFilme = new jIntFrameAltFilme();
+    jIntFrameCadSessao cadSessao = new jIntFrameCadSessao();
 
     /**
      * Creates new form MainView
@@ -123,6 +124,11 @@ public class MainView extends javax.swing.JFrame {
         jMenu9.setText("Sessão");
 
         jMenuItem13.setText("Cadastrar");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem13);
 
         jMenuItem14.setText("Alterar");
@@ -197,8 +203,13 @@ public class MainView extends javax.swing.JFrame {
         carregaTelas(altFilme);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        carregaTelas(cadSessao);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
     /**
      * Realiza o carregamento de forma adequada das telas.
+     *
      * @param tela - Componente que será carretado
      */
     private void carregaTelas(JInternalFrame tela) {
