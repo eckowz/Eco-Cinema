@@ -8,8 +8,6 @@ package view;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Filme;
 import model.Sala;
 import model.Sessao;
@@ -217,7 +215,7 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
 
             PrintUtil.printMessageSucesso(null, title);
         } catch (ParseException | NullPointerException ex) {
-            PrintUtil.printMessageErro(null, "Nenhum item pode estar em branco.", ex);
+            PrintUtil.printMessageErro(null, ex);
         }
     }
 
