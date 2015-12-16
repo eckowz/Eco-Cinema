@@ -22,8 +22,8 @@ public class SessaoServico {
         return (new SessaoDaoBd().assentosDisponiveis(idSessao));
     }
 
-    public void ocupaAssento(Sessao sessao) {
-        new SessaoDaoBd().ocuparAssento(sessao);
+    public void ocupaAssento(Sessao sessao, int qtd) {
+        new SessaoDaoBd().ocuparAssento(sessao, qtd);
     }
 
     public Boolean sessaoExiste(int idSessao) {
