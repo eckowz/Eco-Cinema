@@ -22,7 +22,7 @@ public class FixedLengthDocument extends PlainDocument {
     /**
      * Metodo que controlará a a quantidade de caracteres.
      *
-     * @param maxlen - Quantidade de caracteres que o campo aceitará.
+     * @param maxlen Quantidade de caracteres que o campo aceitará.
      */
     public FixedLengthDocument(final int maxlen) {
         super();

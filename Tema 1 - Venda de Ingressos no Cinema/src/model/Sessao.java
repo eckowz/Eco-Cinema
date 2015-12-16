@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 import java.util.Objects;
 
+
 public class Sessao implements Comparable<Sessao> {
 
     private int idSessao;

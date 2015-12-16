@@ -200,7 +200,9 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
             String hora = (String) jCombHora.getSelectedItem();
             String data = DateUtil.dateToString((Date) jDateChooser.getDate());
 
+            /*Converte os campos de data e hora em uma única String*/
             String tempDataHora = "" + data + " " + hora;
+            /*Converte a String em Date*/
             Date dataHora = DateUtil.stringToDateHour(tempDataHora);
 
             Sala sala = (Sala) jCombSala.getSelectedItem();
