@@ -13,10 +13,8 @@ import javax.swing.JInternalFrame;
  */
 public class MainView extends javax.swing.JFrame {
 
-    jIntFrameCadSala cadSala = new jIntFrameCadSala();
-    jIntFrameAltSala altSala = new jIntFrameAltSala();
-    jIntFrameCadFilme cadFilme = new jIntFrameCadFilme();
-    jIntFrameAltFilme altFilme = new jIntFrameAltFilme();
+    JIntFrameCadSala cadSala = new JIntFrameCadSala();
+    JIntFrameCadFilme cadFilme = new JIntFrameCadFilme();
     jIntFrameCadSessao cadSessao = new jIntFrameCadSessao();
     jIntFrameRegVenda regVenda = new jIntFrameRegVenda();
 
@@ -43,22 +41,10 @@ public class MainView extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
 
         jMenuItem7.setText("jMenuItem7");
 
@@ -92,14 +78,6 @@ public class MainView extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem9);
 
-        jMenuItem10.setText("Alterar");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem10);
-
         jMenu1.add(jMenu7);
 
         jMenu8.setText("Filme");
@@ -112,30 +90,7 @@ public class MainView extends javax.swing.JFrame {
         });
         jMenu8.add(jMenuItem11);
 
-        jMenuItem12.setText("Alterar");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem12);
-
         jMenu1.add(jMenu8);
-
-        jMenu9.setText("Sessão");
-
-        jMenuItem13.setText("Cadastrar");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem13);
-
-        jMenuItem14.setText("Alterar");
-        jMenu9.add(jMenuItem14);
-
-        jMenu1.add(jMenu9);
 
         jMenuBar1.add(jMenu1);
 
@@ -150,31 +105,6 @@ public class MainView extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Consultas");
-
-        jMenu4.setText("Salas");
-
-        jMenuItem5.setText("Listar Salas");
-        jMenu4.add(jMenuItem5);
-
-        jMenu3.add(jMenu4);
-
-        jMenu5.setText("Filmes");
-
-        jMenuItem6.setText("Listar Filmes");
-        jMenu5.add(jMenuItem6);
-
-        jMenu3.add(jMenu5);
-
-        jMenu6.setText("Sessões");
-
-        jMenuItem8.setText("Listar Sessões");
-        jMenu6.add(jMenuItem8);
-
-        jMenu3.add(jMenu6);
-
-        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -197,21 +127,9 @@ public class MainView extends javax.swing.JFrame {
         carregaTelas(cadSala);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        carregaTelas(altSala);
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         carregaTelas(cadFilme);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
-
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        carregaTelas(altFilme);
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
-
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        carregaTelas(cadSessao);
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         carregaTelas(regVenda);
@@ -258,43 +176,7 @@ public class MainView extends javax.swing.JFrame {
      * @deprecated - generalizado.
      * @see - Method carregaTelas
      */
-    private void telaAltSala() {
-        if (altSala.isShowing()) {
-            altSala.dispose();
-            jDeskPane.remove(altSala);
-        }
-        jDeskPane.add(altSala);
-        altSala.setVisible(true);
-        try {
-            altSala.setMaximum(true);
-        } catch (PropertyVetoException ex) {
-            PrintUtil.printMessageErro(this, ex);
-        }
-    }
-
-    /**
-     * @deprecated - generalizado.
-     * @see - Method carregaTelas
-     */
     private void telaCadFilme() {
-        if (cadFilme.isShowing()) {
-            cadFilme.dispose();
-            jDeskPane.remove(cadFilme);
-        }
-        jDeskPane.add(cadFilme);
-        cadFilme.setVisible(true);
-        try {
-            cadFilme.setMaximum(true);
-        } catch (PropertyVetoException ex) {
-            PrintUtil.printMessageErro(this, ex);
-        }
-    }
-
-    /**
-     * @deprecated - generalizado.
-     * @see - Method carregaTelas
-     */
-    private void telaAltFilme() {
         if (cadFilme.isShowing()) {
             cadFilme.dispose();
             jDeskPane.remove(cadFilme);
@@ -328,24 +210,12 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDeskPane;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 

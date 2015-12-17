@@ -17,7 +17,7 @@ import util.FixedLengthDocument;
  *
  * @author gserafini
  */
-public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
+public class JIntFrameCadFilme extends javax.swing.JInternalFrame {
 
     FilmeServico filmeServico;
     /**
@@ -36,7 +36,7 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
     /**
      * Cria e inicializa o form jIntFrameAltFilme.
      */
-    public jIntFrameAltFilme() {
+    public JIntFrameCadFilme() {
         initComponents();
         filmeServico = new FilmeServico();
         carregarDados();
@@ -57,7 +57,6 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
         jButtonDeletar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButtonConfirmarEdicao = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jTextNomeFilme = new javax.swing.JTextField();
         jTextGeneroFilme = new javax.swing.JTextField();
@@ -68,6 +67,7 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaFilme = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jButtonCadConfirma = new javax.swing.JButton();
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         setClosable(true);
@@ -137,7 +137,7 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,14 +152,6 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-
-        jButtonConfirmarEdicao.setText("Confirmar Edição");
-        jButtonConfirmarEdicao.setEnabled(false);
-        jButtonConfirmarEdicao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConfirmarEdicaoActionPerformed(evt);
-            }
-        });
 
         jButtonLimpar.setText("Limpar");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +176,13 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Sinopse:");
 
+        jButtonCadConfirma.setText("Cadastrar");
+        jButtonCadConfirma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadConfirmaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -192,32 +191,31 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButtonCadConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextNumFilme))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextGeneroFilme))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextNomeFilme))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButtonConfirmarEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextNumFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2)))
+                        .addComponent(jTextNomeFilme)))
                 .addGap(42, 42, 42))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextNumFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -235,24 +233,29 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonConfirmarEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCadConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setBounds(0, 0, 575, 537);
@@ -264,6 +267,7 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
      */
     private void carregarDados() {
         tabela.setNumRows(0);
+        limparCampos();
         List<Filme> lista;
         lista = filmeServico.listarFilmes();
 
@@ -279,7 +283,6 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
         jTable1.setModel(tabela);
         jButtonEditar.setEnabled(false);
         jButtonDeletar.setEnabled(false);
-        jButtonConfirmarEdicao.setEnabled(false);
     }
 
     /**
@@ -292,7 +295,27 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
         jTextAreaFilme.setText("");
         jButtonEditar.setEnabled(false);
         jButtonDeletar.setEnabled(false);
-        jButtonConfirmarEdicao.setEnabled(false);
+        jButtonCadConfirma.setText("Cadastrar");
+    }
+
+    /**
+     * Realiza a leitura dos campos do formulario e os adiciona ao banco através
+     * dos serviços.
+     */
+    public void cadFilme() {
+        try {
+            Filme filme = new Filme();
+
+            filme.setNomeFilme(jTextNomeFilme.getText());
+            filme.setGeneroFilme(jTextGeneroFilme.getText());
+            filme.setSinopseFilme(jTextAreaFilme.getText());
+
+            filmeServico.addFilme(filme);
+
+            PrintUtil.printMessageSucesso(null, title);
+        } catch (Exception e) {
+            PrintUtil.printMessageErro(null, e);
+        }
     }
 
     public void removerRegistro() {
@@ -319,7 +342,7 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
             jTextGeneroFilme.setText((String) jTable1.getValueAt(linhaSelecionada, 2));
             jTextAreaFilme.setText((String) jTable1.getValueAt(linhaSelecionada, 3));
         } else {
-            PrintUtil.printMessageErro(null, "Selecione uma linha!", null);
+            PrintUtil.printMessageCancelar(null, "Selecione uma linha!");
         }
     }
 
@@ -347,19 +370,13 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         editarLinha();
-        jButtonConfirmarEdicao.setEnabled(true);
+        jButtonCadConfirma.setText("Confirma Alteração");
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         limparCampos();
         carregarDados();
     }//GEN-LAST:event_jButtonLimparActionPerformed
-
-    private void jButtonConfirmarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarEdicaoActionPerformed
-        confirmarEdicao();
-        carregarDados();
-        limparCampos();
-    }//GEN-LAST:event_jButtonConfirmarEdicaoActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jButtonEditar.setEnabled(true);
@@ -370,9 +387,20 @@ public class jIntFrameAltFilme extends javax.swing.JInternalFrame {
         carregarDados();
     }//GEN-LAST:event_formComponentShown
 
+    private void jButtonCadConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadConfirmaActionPerformed
+        if (jButtonCadConfirma.getText().equals("Confirma Alteração")) {
+            confirmarEdicao();
+        }
+        if (jButtonCadConfirma.getText().equals("Cadastrar")) {
+            cadFilme();
+        }
+        carregarDados();
+        limparCampos();
+    }//GEN-LAST:event_jButtonCadConfirmaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonConfirmarEdicao;
+    private javax.swing.JButton jButtonCadConfirma;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonLimpar;

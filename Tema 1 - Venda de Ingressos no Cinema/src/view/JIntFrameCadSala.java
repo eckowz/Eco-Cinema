@@ -16,7 +16,7 @@ import servico.SalaServico;
  *
  * @author gserafini
  */
-public class jIntFrameAltSala extends javax.swing.JInternalFrame {
+public class JIntFrameCadSala extends javax.swing.JInternalFrame {
 
     SalaServico salaServico;
     /**
@@ -35,7 +35,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
     /**
      * Cria e inicializa o form jIntFrameAltSala.
      */
-    public jIntFrameAltSala() {
+    public JIntFrameCadSala() {
         initComponents();
         salaServico = new SalaServico();
         carregarDados();
@@ -56,7 +56,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
         jButtonDeletar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButtonConfirmarEdicao = new javax.swing.JButton();
+        jButtonCadConfirma = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jTextCodigoSala = new javax.swing.JTextField();
         jTextQuantidadeDeAssentos = new javax.swing.JTextField();
@@ -133,13 +133,13 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,11 +149,10 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        jButtonConfirmarEdicao.setText("Confirmar Edição");
-        jButtonConfirmarEdicao.setEnabled(false);
-        jButtonConfirmarEdicao.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadConfirma.setText("Confirmar Edição");
+        jButtonCadConfirma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConfirmarEdicaoActionPerformed(evt);
+                jButtonCadConfirmaActionPerformed(evt);
             }
         });
 
@@ -177,32 +176,30 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextNumSala))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextCodigoSala))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextQuantidadeDeAssentos))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextCodigoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(144, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonConfirmarEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(jButtonCadConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextNumSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,12 +208,12 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextCodigoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextQuantidadeDeAssentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonConfirmarEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCadConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -225,15 +222,23 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 1, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setBounds(0, 0, 575, 537);
@@ -245,6 +250,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
      */
     private void carregarDados() {
         tabela.setNumRows(0);
+        limparCampos();
         List<Sala> lista;
         lista = salaServico.listarSalas();
 
@@ -257,7 +263,6 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
         jTable1.setModel(tabela);
         jButtonEditar.setEnabled(false);
         jButtonDeletar.setEnabled(false);
-        jButtonConfirmarEdicao.setEnabled(false);
     }
 
     /**
@@ -269,7 +274,26 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
         jTextQuantidadeDeAssentos.setText("");
         jButtonEditar.setEnabled(false);
         jButtonDeletar.setEnabled(false);
-        jButtonConfirmarEdicao.setEnabled(false);
+        jButtonCadConfirma.setText("Cadastrar");
+    }
+
+    /**
+     * Realiza a leitura dos campos do formulario e os adiciona ao banco através
+     * dos serviços.
+     */
+    public void cadSala() {
+        try {
+            Sala sala = new Sala();
+
+            sala.setCodSala(Integer.parseInt(jTextCodigoSala.getText()));
+            sala.setQuantidadeAssentos(Integer.parseInt(jTextQuantidadeDeAssentos.getText()));
+
+            salaServico.addSala(sala);
+
+            PrintUtil.printMessageSucesso(null, title);
+        } catch (Exception e) {
+            PrintUtil.printMessageErro(null, e);
+        }
     }
 
     public void removerRegistro() {
@@ -295,7 +319,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
             jTextCodigoSala.setText((String) jTable1.getValueAt(linhaSelecionada, 1));
             jTextQuantidadeDeAssentos.setText((String) jTable1.getValueAt(linhaSelecionada, 2));
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione uma linha!");
+            PrintUtil.printMessageCancelar(null, "Selecione uma linha!");
         }
     }
 
@@ -322,7 +346,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         editarLinha();
-        jButtonConfirmarEdicao.setEnabled(true);
+        jButtonCadConfirma.setText("Confirma Alteração");
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
@@ -330,11 +354,16 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
         carregarDados();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
-    private void jButtonConfirmarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarEdicaoActionPerformed
-        confirmarEdicao();
+    private void jButtonCadConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadConfirmaActionPerformed
+        if (jButtonCadConfirma.getText().equals("Confirma Alteração")) {
+            confirmarEdicao();
+        }
+        if (jButtonCadConfirma.getText().equals("Cadastrar")) {
+            cadSala();
+        }
         carregarDados();
         limparCampos();
-    }//GEN-LAST:event_jButtonConfirmarEdicaoActionPerformed
+    }//GEN-LAST:event_jButtonCadConfirmaActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jButtonEditar.setEnabled(true);
@@ -347,7 +376,7 @@ public class jIntFrameAltSala extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonConfirmarEdicao;
+    private javax.swing.JButton jButtonCadConfirma;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonLimpar;
