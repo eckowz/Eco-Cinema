@@ -34,8 +34,6 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
         filmeServico = new FilmeServico();
         salaServico = new SalaServico();
         sessaoServico = new SessaoServico();
-        carregarDadosSala();
-        carregarDadosFilme();
     }
 
     /**
@@ -67,6 +65,28 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(575, 537));
         setName(""); // NOI18N
         setOpaque(true);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -86,7 +106,6 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
         jCombHora.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00:00:00", "00:30:00", "01:00:00", "01:30:00", "02:00:00", "02:30:00", "03:00:00", "03:30:00", "04:00:00", "04:30:00", "05:00:00", "05:30:00", "06:00:00", "06:30:00", "07:00:00", "07:30:00", "08:00:00", "08:30:00", "09:00:00", "09:30:00", "10:00:00", "10:30:00", "11:00:00", "11:30:00", "12:00:00", "12:30:00", "13:00:00", "13:30:00", "14:00:00", "14:30:00", "15:00:00", "15:30:00", "16:00:00", "16:30:00", "17:00:00", "17:30:00", "18:00:00", "18:30:00", "19:00:00", "19:30:00", "20:00:00", "20:30:00", "21:00:00", "21:30:00", "22:00:00", "22:30:00", "23:00:00", "23:30:00", " " }));
 
         jDateChooser.setDate(new Date());
-        jDateChooser.setDateFormatString("dd/MM/yyyy");
 
         jLabel4.setText("Informe a data:");
 
@@ -160,6 +179,11 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
         setBounds(0, 0, 575, 537);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limparCampos() {
+        jCombFilme.removeAllItems();
+        jCombSala.removeAllItems();
+    }
+
     /**
      * Carrega os registros do banco para uma lista e preenche a tabela com
      * esses registros.
@@ -222,6 +246,16 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
     private void jButtonCadastrarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarSessaoActionPerformed
         cadSessao();
     }//GEN-LAST:event_jButtonCadastrarSessaoActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+
+    }//GEN-LAST:event_formFocusGained
+
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        limparCampos();
+        carregarDadosFilme();
+        carregarDadosSala();
+    }//GEN-LAST:event_formInternalFrameActivated
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
