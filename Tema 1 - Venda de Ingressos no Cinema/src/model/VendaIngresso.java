@@ -18,7 +18,10 @@ public class VendaIngresso implements Comparable<VendaIngresso> {
         this.horarioVenda = horarioVenda;
         this.sessao = sessao;
     }
-    
+
+    public VendaIngresso() {
+    }
+
     public int getIdVenda() {
         return idVenda;
     }

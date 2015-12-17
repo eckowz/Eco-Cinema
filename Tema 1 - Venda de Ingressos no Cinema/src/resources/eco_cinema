@@ -17,7 +17,7 @@ idfilme int REFERENCES filme(idfilme),
 idsala int REFERENCES sala(idsala),
 assentosDisponiveis int);
 
-create table venda_ingressos(
+create table vendaingresso(
 idvenda serial primary key,
 horarioVenda timestamp,
 idsessao int REFERENCES sessao(idsessao)

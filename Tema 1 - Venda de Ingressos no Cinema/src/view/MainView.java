@@ -18,6 +18,7 @@ public class MainView extends javax.swing.JFrame {
     jIntFrameCadFilme cadFilme = new jIntFrameCadFilme();
     jIntFrameAltFilme altFilme = new jIntFrameAltFilme();
     jIntFrameCadSessao cadSessao = new jIntFrameCadSessao();
+    jIntFrameRegVenda regVenda = new jIntFrameRegVenda();
 
     /**
      * Creates new form MainView
@@ -141,6 +142,11 @@ public class MainView extends javax.swing.JFrame {
         jMenu2.setText("Operações");
 
         jMenuItem4.setText("Vendas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -207,10 +213,14 @@ public class MainView extends javax.swing.JFrame {
         carregaTelas(cadSessao);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        carregaTelas(regVenda);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * Realiza o carregamento de forma adequada das telas.
      *
-     * @param tela - Componente que será carretado
+     * @param tela Componente que será carretado
      */
     private void carregaTelas(JInternalFrame tela) {
         if (tela.isShowing()) {
@@ -222,7 +232,7 @@ public class MainView extends javax.swing.JFrame {
         try {
             tela.setMaximum(true);
         } catch (PropertyVetoException ex) {
-            PrintUtil.printMessageErro(this, null, ex);
+            PrintUtil.printMessageErro(this, ex);
         }
     }
 
@@ -240,7 +250,7 @@ public class MainView extends javax.swing.JFrame {
         try {
             cadSala.setMaximum(true);
         } catch (PropertyVetoException ex) {
-            PrintUtil.printMessageErro(this, null, ex);
+            PrintUtil.printMessageErro(this, ex);
         }
     }
 
@@ -258,7 +268,7 @@ public class MainView extends javax.swing.JFrame {
         try {
             altSala.setMaximum(true);
         } catch (PropertyVetoException ex) {
-            PrintUtil.printMessageErro(this, null, ex);
+            PrintUtil.printMessageErro(this, ex);
         }
     }
 
@@ -276,7 +286,7 @@ public class MainView extends javax.swing.JFrame {
         try {
             cadFilme.setMaximum(true);
         } catch (PropertyVetoException ex) {
-            PrintUtil.printMessageErro(this, null, ex);
+            PrintUtil.printMessageErro(this, ex);
         }
     }
 
@@ -294,7 +304,7 @@ public class MainView extends javax.swing.JFrame {
         try {
             cadFilme.setMaximum(true);
         } catch (PropertyVetoException ex) {
-            PrintUtil.printMessageErro(this, null, ex);
+            PrintUtil.printMessageErro(this, ex);
         }
     }
 

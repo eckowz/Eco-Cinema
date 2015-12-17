@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 import java.util.Objects;
-
+import util.DateUtil;
 
 public class Sessao implements Comparable<Sessao> {
 
@@ -78,7 +78,7 @@ public class Sessao implements Comparable<Sessao> {
 
     @Override
     public String toString() {
-        return "Sessao{" + "horario=" + horario + ", filme=" + filme + ", sala=" + sala + ", assentosDisponiveis=" + assentosDisponiveis + '}';
+        return "Horario: " + DateUtil.dateHourToString(horario) + ", Filme: " + filme + ",Sala: " + sala + ", Assentos disponiveis:" + assentosDisponiveis + '}';
     }
 
     @Override
