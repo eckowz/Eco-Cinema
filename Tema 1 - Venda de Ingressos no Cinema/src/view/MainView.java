@@ -36,6 +36,7 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         jDeskPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -43,10 +44,14 @@ public class MainView extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
 
         jMenuItem7.setText("jMenuItem7");
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eco-Cinema");
@@ -92,6 +97,18 @@ public class MainView extends javax.swing.JFrame {
 
         jMenu1.add(jMenu8);
 
+        jMenu9.setText("Sessão");
+
+        jMenuItem12.setText("Cadastrar");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem12);
+
+        jMenu1.add(jMenu9);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Operações");
@@ -134,6 +151,10 @@ public class MainView extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         carregaTelas(regVenda);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        carregaTelas(cadSessao);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * Realiza o carregamento de forma adequada das telas.
@@ -210,10 +231,13 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDeskPane;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
