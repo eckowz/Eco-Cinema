@@ -65,11 +65,6 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(575, 537));
         setName(""); // NOI18N
         setOpaque(true);
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
@@ -246,10 +241,6 @@ public class jIntFrameCadSessao extends javax.swing.JInternalFrame {
     private void jButtonCadastrarSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarSessaoActionPerformed
         cadSessao();
     }//GEN-LAST:event_jButtonCadastrarSessaoActionPerformed
-
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-
-    }//GEN-LAST:event_formFocusGained
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         limparCampos();
