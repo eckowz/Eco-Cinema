@@ -78,7 +78,7 @@ public class Sessao implements Comparable<Sessao> {
 
     @Override
     public String toString() {
-        return "Horario: " + DateUtil.dateHourToString(horario) + ", Filme: " + filme + ",Sala: " + sala + ", Assentos disponiveis:" + assentosDisponiveis + '}';
+        return "Horario: " + DateUtil.dateHourToString(horario) + ", Filme: " + filme + ",Sala: " + sala + ", Assentos disponiveis:" + assentosDisponiveis;
     }
 
     @Override

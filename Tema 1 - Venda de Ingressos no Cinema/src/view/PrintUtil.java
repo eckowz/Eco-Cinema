@@ -36,21 +36,34 @@ public class PrintUtil {
      */
     public static void printMessageErro(JFrame janela, String msg, Exception e) {
         JOptionPane.showMessageDialog(janela,
-                msg + "/n " + e.getMessage(),
+                msg + "\n " + e.getMessage(),
                 "Erro",
                 JOptionPane.ERROR_MESSAGE);
     }
 
     /**
-     * Mensagem de retorno apenas com aviso de operação cancelada.
+     * Mensagem de retorno com opção de informar texto adicional.
      *
-     * @param janela - necessário para o método, pode ser null
-     * @param msg - mensagem a ser exibita(não utilizado)
+     * @param janela Necessário para o método, pode ser null
+     * @param msg Mensagem a ser exibita(não utilizado)
      */
     public static void printMessageCancelar(JFrame janela, String msg) {
         JOptionPane.showMessageDialog(janela,
+                "Operação cancelada."
+                + "\n " + msg,
+                "Ops!",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /**
+     * Mensagem de retorno apenas com aviso de operação cancelada.
+     *
+     * @param janela Necessário para o método, pode ser null
+     */
+    public static void printMessageCancelar(JFrame janela) {
+        JOptionPane.showMessageDialog(janela,
                 "Operação cancelada.",
-                "Erro",
+                "Ops!",
                 JOptionPane.INFORMATION_MESSAGE);
     }
 

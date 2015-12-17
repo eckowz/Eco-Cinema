@@ -30,7 +30,6 @@ public class jIntFrameRegVenda extends javax.swing.JInternalFrame {
         initComponents();
         sessaoServico = new SessaoServico();
         vendaIngressoServico = new VendaIngressoServico();
-        carregarDadosSessao();
     }
 
     /**
@@ -68,16 +67,28 @@ public class jIntFrameRegVenda extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(575, 537));
         setName(""); // NOI18N
         setOpaque(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setText("Selecione a Sessão:");
 
-        jCombSessao.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCombSessaoItemStateChanged(evt);
-            }
-        });
         jCombSessao.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -87,9 +98,9 @@ public class jIntFrameRegVenda extends javax.swing.JInternalFrame {
                 jCombSessaoPopupMenuWillBecomeVisible(evt);
             }
         });
-        jCombSessao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCombSessaoMouseClicked(evt);
+        jCombSessao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCombSessaoActionPerformed(evt);
             }
         });
 
@@ -236,8 +247,6 @@ public class jIntFrameRegVenda extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        getAccessibleContext().setAccessibleName("Registrar Vendas");
-
         setBounds(0, 0, 575, 537);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -246,7 +255,6 @@ public class jIntFrameRegVenda extends javax.swing.JInternalFrame {
      * esses registros.
      */
     private void carregarDadosSessao() {
-        limparCampos();
         List<Sessao> lista;
         lista = sessaoServico.listarSessoes();
 
@@ -256,14 +264,21 @@ public class jIntFrameRegVenda extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     *
+     */
     public void limparCampos() {
-        jCombSessao.setSelectedItem(null);
+        jCombSessao.removeAllItems();
         jTextHorario.setText("");
         jTextNomeFilme.setText("");
         jTextCodigoSala.setText("");
         jTextAssentosDisp.setText("");
     }
 
+    /**
+     *
+     * @param sessao
+     */
     public void carregarCampos(Sessao sessao) {
         jTextHorario.setText(DateUtil.dateHourToString(sessao.getHorario()));
         jTextNomeFilme.setText(sessao.getFilme().getNomeFilme());
@@ -272,38 +287,50 @@ public class jIntFrameRegVenda extends javax.swing.JInternalFrame {
     }
 
     public void regVenda() {
-        VendaIngresso vendaIngresso = new VendaIngresso();
-        Sessao sessao = (Sessao) jCombSessao.getSelectedItem();
-        int q = Integer.parseInt(jTextQtdIngressos.getText());
-        if (sessao.getAssentosDisponiveis() >= q && sessao.getAssentosDisponiveis()>0) {
-            vendaIngresso.setSessao((Sessao) jCombSessao.getSelectedItem());
-            vendaIngresso.setHorarioVenda(DateUtil.dataHoraAtual());
-            sessaoServico.ocupaAssento(sessao, q);
+        try {
+            VendaIngresso vendaIngresso = new VendaIngresso();
+            Sessao sessao = (Sessao) jCombSessao.getSelectedItem();
+            int q = Integer.parseInt(jTextQtdIngressos.getText());
 
-            vendaIngressoServico.adicionarVendaIngresso(vendaIngresso);
-            PrintUtil.printMessageSucesso(null, null);
-        } else {
-            PrintUtil.printMessageErro(null, null);
+            if (sessao.getAssentosDisponiveis() >= q && sessao.getAssentosDisponiveis() > 0) {
+                vendaIngresso.setSessao((Sessao) jCombSessao.getSelectedItem());
+                vendaIngresso.setHorarioVenda(DateUtil.dataHoraAtual());
+                sessaoServico.ocupaAssento(sessao, q);
+
+                vendaIngressoServico.adicionarVendaIngresso(vendaIngresso);
+                PrintUtil.printMessageSucesso(null, null);
+                limparCampos();
+            } else {
+                PrintUtil.printMessageCancelar(null, "Não há assentos disponiveis.");
+            }
+        } catch (Exception e) {
+            PrintUtil.printMessageErro(null, title, e);
 
         }
-        
+
     }
     private void jButtonRegVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegVendaActionPerformed
         regVenda();
     }//GEN-LAST:event_jButtonRegVendaActionPerformed
 
-    private void jCombSessaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCombSessaoItemStateChanged
-        Sessao sessao = (Sessao) jCombSessao.getSelectedItem();
-        carregarCampos(sessao);
-    }//GEN-LAST:event_jCombSessaoItemStateChanged
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        limparCampos();
+        carregarDadosSessao();
+    }//GEN-LAST:event_formInternalFrameActivated
+
+    private void jCombSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombSessaoActionPerformed
+        if (jCombSessao.getItemCount() != 0) {
+            Sessao sessao = (Sessao) jCombSessao.getSelectedItem();
+            carregarCampos(sessao);
+        }
+
+    }//GEN-LAST:event_jCombSessaoActionPerformed
 
     private void jCombSessaoPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jCombSessaoPopupMenuWillBecomeVisible
-        //carregarDadosSessao();
+        if (jCombSessao.getItemCount() == 0) {
+            carregarDadosSessao();
+        }
     }//GEN-LAST:event_jCombSessaoPopupMenuWillBecomeVisible
-
-    private void jCombSessaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombSessaoMouseClicked
-
-    }//GEN-LAST:event_jCombSessaoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

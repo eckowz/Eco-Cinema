@@ -78,8 +78,9 @@ public class Sala {
 
     @Override
     public String toString() {
-        return "Cód:" + codSala + ", Assentos Disp.: " + quantidadeAssentos;
+        return "" + codSala;
     }
 
+    
 
 }
